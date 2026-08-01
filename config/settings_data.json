@@ -1,0 +1,26 @@
+{
+  "current": {
+    "color_bg_primary": "#0f0c1b",
+    "color_bg_secondary": "#1a1635",
+    "color_text_primary": "#ffffff",
+    "color_text_secondary": "#a9a4d8",
+    "color_accent_teal": "#00f2fe",
+    "color_accent_pink": "#fe019a",
+    "color_accent_orange": "#ff8c00",
+    "color_accent_purple": "#7b2cbf",
+    "color_border": "rgba(255, 255, 255, 0.1)"
+  },
+  "presets": {
+    "Default": {
+      "color_bg_primary": "#0f0c1b",
+      "color_bg_secondary": "#1a1635",
+      "color_text_primary": "#ffffff",
+      "color_text_secondary": "#a9a4d8",
+      "color_accent_teal": "#00f2fe",
+      "color_accent_pink": "#fe019a",
+      "color_accent_orange": "#ff8c00",
+      "color_accent_purple": "#7b2cbf",
+      "color_border": "rgba(255, 255, 255, 0.1)"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+<header class="header-wrapper" id="section-{{ section.id }}">
+  <div class="header">
+    <!-- Brand Logo -->
+    <a href="{{ routes.root_url }}" class="header-logo-link interactive-shape">
+      <div class="header-logo-icon">🐾</div>
+      <span>{{ section.settings.logo_text | default: shop.name }}</span>
+    </a>
+
+    <!-- Navigation Menu -->
+    <nav class="header-nav" role="navigation">
+      <ul class="header-nav-list">
+        {%- if linklists[section.settings.menu].links.size > 0 -%}
+          {%- for link in linklists[section.settings.menu].links -%}
+            <li class="header-nav-item">
+              <a href="{{ link.url }}" class="header-nav-link interactive-shape {% if link.active %}header-nav-link-active{% endif %}">
+                {{ link.title | escape }}
+              </a>
+            </li>
+          {%- endfor -%}
+        {%- else -%}
+          <!-- Premium fallback links to ensure it looks amazing immediately -->
+          <li class="header-nav-item"><a href="#" class="header-nav-link interactive-shape">Home</a></li>
+          <li class="header-nav-item"><a href="#" class="header-nav-link interactive-shape">Dog Luxury</a></li>
+          <li class="header-nav-item"><a href="#" class="header-nav-link interactive-shape">Cat Extravaganza</a></li>
+          <li class="header-nav-item"><a href="#" class="header-nav-link interactive-shape">Premium Care</a></li>
+          <li class="header-nav-item"><a href="#" class="header-nav-link interactive-shape">Join the Club</a></li>
+        {%- endif -%}
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <button type="button" class="header-action-btn interactive-shape" aria-label="Search">
+        🔍
+      </button>
+      <button type="button" class="header-action-btn interactive-shape" aria-label="Account">
+        👤
+      </button>
+      <a href="{{ routes.cart_url }}" class="header-action-btn cart-icon-wrapper interactive-shape" aria-label="Cart">
+        🛒
+        <span class="cart-count-bubble">2</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "PAWS & CLAWS"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-extravaganza",
+      "settings": {
+        "badge": "The Ultimate Premium Theme",
+        "title": "Luxury living for your royal pets",
+        "description": "Discover an extravagant playground of premium accessories, state-of-the-art beds, and gourmet organic treats meticulously designed for the sophisticated companion."
+      }
+    },
+    "marquee_1": {
+      "type": "scrolling-marquee",
+      "settings": {
+        "text_1": "PAWS & CLAWS",
+        "text_2": "PREMIUM COUTURE FOR ROYAL PETS",
+        "text_3": "EXTRAVAGANT QUALITY",
+        "text_4": "UNLEASH THE EXTRAORDINARY"
+      }
+    },
+    "collections": {
+      "type": "geometric-collections",
+      "settings": {
+        "badge": "Geometric Realms of Luxury",
+        "title": "Premium Curated Kingdoms",
+        "description": "Explore our categories through standard premium geometric proportions. Experience pure architectural layout design."
+      }
+    },
+    "marquee_2": {
+      "type": "scrolling-marquee",
+      "settings": {
+        "text_1": "BIG CIRCLES, SMALL CIRCLES",
+        "text_2": "SQUARES & RECTANGLES",
+        "text_3": "MAKE IT EXTRAVAGANT",
+        "text_4": "DESIGNED FOR PURE LUXURY"
+      }
+    },
+    "showcase": {
+      "type": "pet-showcase",
+      "settings": {
+        "badge": "The Royal Collection",
+        "title": "Extravagant Masterpieces",
+        "description": "Indulge your companions in these limited-edition bespoke creations. Crafted by expert artisan tailors."
+      }
+    },
+    "promo": {
+      "type": "extravagant-promo",
+      "settings": {
+        "title": "The VIP Paws & Claws Club",
+        "description": "Access an elite tier of membership crafted for pet owners who demand absolute excellence. From custom-sized garments to premium curated organic meal boxes, our VIP members experience pet care at a whole new dimension."
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "badge": "Approved by Royalty",
+        "title": "Extravagant Pet Voices",
+        "description": "Hear directly from our most discerning four-legged connoisseurs who have experienced the Paws & Claws standard."
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Enter the Royal Court",
+        "description": "Subscribe to receive invitation-only previews of new collections, private sales, and extravagant pet lifestyle tips directly to your inbox."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee_1",
+    "collections",
+    "marquee_2",
+    "showcase",
+    "promo",
+    "testimonials",
+    "newsletter"
+  ]
+}

@@ -1,0 +1,146 @@
+<section class="pet-showcase section-padding" id="section-{{ section.id }}">
+  <div class="section-header">
+    <span class="section-badge">{{ section.settings.badge | escape }}</span>
+    <h2 class="section-title">{{ section.settings.title | escape }}</h2>
+    <p>{{ section.settings.description | escape }}</p>
+  </div>
+
+  <div class="showcase-slider-container">
+    <div class="showcase-grid">
+      <!-- Card 1 -->
+      <div class="showcase-card">
+        <div class="showcase-img-placeholder">
+          <div class="showcase-img-shape"></div>
+          <span class="showcase-img-icon">👑</span>
+        </div>
+        <div class="showcase-pet-name">Dog Premium</div>
+        <h3 class="showcase-title">{{ section.settings.card_1_title | default: "Gold-Weave Dog Collar" }}</h3>
+        <p>{{ section.settings.card_1_desc | default: "Handcrafted 24k gold threads with Italian premium leather. Fits any royal neck." }}</p>
+        <div class="showcase-price">
+          <span>$1,450.00</span>
+          <button type="button" class="showcase-add-to-cart interactive-shape" aria-label="Add to cart">＋</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="showcase-card">
+        <div class="showcase-img-placeholder">
+          <div class="showcase-img-shape"></div>
+          <span class="showcase-img-icon">🐾</span>
+        </div>
+        <div class="showcase-pet-name">Cat Luxury</div>
+        <h3 class="showcase-title">{{ section.settings.card_2_title | default: "Imperial Velvet Lounger" }}</h3>
+        <p>{{ section.settings.card_2_desc | default: "High-density foam mattress wrapped in diamond-tufted royal purple velvet." }}</p>
+        <div class="showcase-price">
+          <span>$890.00</span>
+          <button type="button" class="showcase-add-to-cart interactive-shape" aria-label="Add to cart">＋</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="showcase-card">
+        <div class="showcase-img-placeholder">
+          <div class="showcase-img-shape"></div>
+          <span class="showcase-img-icon">💎</span>
+        </div>
+        <div class="showcase-pet-name">Dog Accessories</div>
+        <h3 class="showcase-title">{{ section.settings.card_3_title | default: "Platinum Bowl Set" }}</h3>
+        <p>{{ section.settings.card_3_desc | default: "Two surgical-grade heavy platinum bowls set in a customized marble vanity." }}</p>
+        <div class="showcase-price">
+          <span>$2,100.00</span>
+          <button type="button" class="showcase-add-to-cart interactive-shape" aria-label="Add to cart">＋</button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="showcase-card">
+        <div class="showcase-img-placeholder">
+          <div class="showcase-img-shape"></div>
+          <span class="showcase-img-icon">🐈</span>
+        </div>
+        <div class="showcase-pet-name">Cat Elite</div>
+        <h3 class="showcase-title">{{ section.settings.card_4_title | default: "Swarovski Crystal Harness" }}</h3>
+        <p>{{ section.settings.card_4_desc | default: "Over 500 hand-set Swarovski crystals designed for the ultimate evening feline look." }}</p>
+        <div class="showcase-price">
+          <span>$1,250.00</span>
+          <button type="button" class="showcase-add-to-cart interactive-shape" aria-label="Add to cart">＋</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pet Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Section Badge",
+      "default": "The Royal Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Extravagant Masterpieces"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Indulge your companions in these limited-edition bespoke creations. Crafted by expert artisan tailors."
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Card 1 Title",
+      "default": "Gold-Weave Dog Collar"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_desc",
+      "label": "Card 1 Description"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Card 2 Title",
+      "default": "Imperial Velvet Lounger"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_desc",
+      "label": "Card 2 Description"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Card 3 Title",
+      "default": "Platinum Bowl Set"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_desc",
+      "label": "Card 3 Description"
+    },
+    {
+      "type": "text",
+      "id": "card_4_title",
+      "label": "Card 4 Title",
+      "default": "Swarovski Crystal Harness"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_desc",
+      "label": "Card 4 Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pet Showcase"
+    }
+  ]
+}
+{% endschema %}

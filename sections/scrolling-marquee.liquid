@@ -1,0 +1,60 @@
+<section class="scrolling-marquee" id="section-{{ section.id }}">
+  <div class="marquee-inner">
+    <!-- Duplicate items to ensure infinite seamless scrolling loop -->
+    <div class="marquee-content">
+      <span class="marquee-text"><span class="marquee-icon">🐾</span> {{ section.settings.text_1 | escape }}</span>
+      <span class="marquee-text"><span class="marquee-icon">✨</span> {{ section.settings.text_2 | escape }}</span>
+      <span class="marquee-text"><span class="marquee-icon">💖</span> {{ section.settings.text_3 | escape }}</span>
+      <span class="marquee-text"><span class="marquee-icon">🐩</span> {{ section.settings.text_4 | escape }}</span>
+    </div>
+    <div class="marquee-content">
+      <span class="marquee-text"><span class="marquee-icon">🐾</span> {{ section.settings.text_1 | escape }}</span>
+      <span class="marquee-text"><span class="marquee-icon">✨</span> {{ section.settings.text_2 | escape }}</span>
+      <span class="marquee-text"><span class="marquee-icon">💖</span> {{ section.settings.text_3 | escape }}</span>
+      <span class="marquee-text"><span class="marquee-icon">🐩</span> {{ section.settings.text_4 | escape }}</span>
+    </div>
+    <div class="marquee-content">
+      <span class="marquee-text"><span class="marquee-icon">🐾</span> {{ section.settings.text_1 | escape }}</span>
+      <span class="marquee-text"><span class="marquee-icon">✨</span> {{ section.settings.text_2 | escape }}</span>
+      <span class="marquee-text"><span class="marquee-icon">💖</span> {{ section.settings.text_3 | escape }}</span>
+      <span class="marquee-text"><span class="marquee-icon">🐩</span> {{ section.settings.text_4 | escape }}</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Scrolling Marquee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "Text Item 1",
+      "default": "PAWS & CLAWS"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Text Item 2",
+      "default": "PREMIUM COUTURE FOR ROYAL PETS"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "Text Item 3",
+      "default": "EXTRAVAGANT QUALITY"
+    },
+    {
+      "type": "text",
+      "id": "text_4",
+      "label": "Text Item 4",
+      "default": "UNLEASH THE EXTRAORDINARY"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Marquee"
+    }
+  ]
+}
+{% endschema %}

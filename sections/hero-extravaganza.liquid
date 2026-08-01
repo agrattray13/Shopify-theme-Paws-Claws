@@ -1,0 +1,91 @@
+<section class="hero-extravaganza" id="section-{{ section.id }}">
+  <!-- Background Interactive Geometric Shapes -->
+  <div class="hero-shapes-container">
+    <div class="hero-shape hero-circle-1 interactive-shape"></div>
+    <div class="hero-shape hero-circle-2 interactive-shape"></div>
+    <div class="hero-shape hero-square-1 interactive-shape"></div>
+    <div class="hero-shape hero-rect-1 interactive-shape">Paws Premium</div>
+  </div>
+
+  <div class="hero-content">
+    {%- if section.settings.badge != blank -%}
+      <div class="hero-badge">
+        {{ section.settings.badge | escape }}
+      </div>
+    {%- endif -%}
+
+    <h1 class="hero-title">
+      {{ section.settings.title | escape }}
+    </h1>
+
+    <p class="hero-description">
+      {{ section.settings.description | escape }}
+    </p>
+
+    <div class="hero-ctas">
+      {%- if section.settings.button_1_label != blank -%}
+        <a href="{{ section.settings.button_1_link | default: '#' }}" class="btn-primary interactive-shape">
+          {{ section.settings.button_1_label | escape }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.button_2_label != blank -%}
+        <a href="{{ section.settings.button_2_link | default: '#' }}" class="btn-secondary interactive-shape">
+          {{ section.settings.button_2_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Extravaganza",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Text",
+      "default": "The Ultimate Premium Theme"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Hero Title",
+      "default": "Luxury living for your royal pets"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Hero Description",
+      "default": "Discover an extravagant playground of premium accessories, state-of-the-art beds, and gourmet organic treats meticulously designed for the sophisticated companion."
+    },
+    {
+      "type": "text",
+      "id": "button_1_label",
+      "label": "Button 1 Label",
+      "default": "Explore Royalty"
+    },
+    {
+      "type": "url",
+      "id": "button_1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "button_2_label",
+      "label": "Button 2 Label",
+      "default": "Our Philosophy"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Button 2 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Extravaganza"
+    }
+  ]
+}
+{% endschema %}

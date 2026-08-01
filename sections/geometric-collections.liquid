@@ -1,0 +1,155 @@
+<section class="geometric-collections section-padding" id="section-{{ section.id }}">
+  <div class="section-header">
+    <span class="section-badge">{{ section.settings.badge | escape }}</span>
+    <h2 class="section-title">{{ section.settings.title | escape }}</h2>
+    <p>{{ section.settings.description | escape }}</p>
+  </div>
+
+  <div class="collections-grid">
+    <!-- Big Circle Card (e.g. Dogs) -->
+    <div class="collection-card shape-big-circle interactive-shape">
+      <div class="card-icon">🐕</div>
+      <h3 class="card-title">{{ section.settings.circle_1_title | default: "Dog Palace" }}</h3>
+      <p class="card-desc">{{ section.settings.circle_1_desc | default: "Everything luxurious for canine royalty, from silk beds to diamond collars." }}</p>
+      <a href="#" class="card-btn interactive-shape">Explore</a>
+    </div>
+
+    <!-- Rectangle Card (e.g. Cats) -->
+    <div class="collection-card shape-rectangle interactive-shape">
+      <div class="card-icon">🐈</div>
+      <h3 class="card-title">{{ section.settings.rect_1_title | default: "Cat Chateau" }}</h3>
+      <p class="card-desc">{{ section.settings.rect_1_desc | default: "Velvet climbing towers, premium catnip elixirs, and bespoke porcelain bowls." }}</p>
+      <a href="#" class="card-btn interactive-shape">Explore</a>
+    </div>
+
+    <!-- Square Card (e.g. Birds) -->
+    <div class="collection-card shape-square interactive-shape">
+      <div class="card-icon">🦜</div>
+      <h3 class="card-title">{{ section.settings.square_1_title | default: "Avian Mansion" }}</h3>
+      <p class="card-desc">{{ section.settings.square_1_desc | default: "Gilded cages and premium feed." }}</p>
+      <a href="#" class="card-btn interactive-shape">Explore</a>
+    </div>
+
+    <!-- Small Circle Card (e.g. Toys/Accoutrements) -->
+    <div class="collection-card shape-small-circle interactive-shape">
+      <div class="card-icon">🎾</div>
+      <h3 class="card-title">{{ section.settings.circle_2_title | default: "Elite Play" }}</h3>
+      <p class="card-desc">{{ section.settings.circle_2_desc | default: "Gold-plated chewing toys." }}</p>
+      <a href="#" class="card-btn interactive-shape">Explore</a>
+    </div>
+
+    <!-- Square Rotated Card -->
+    <div class="collection-card shape-square-rotated-box interactive-shape">
+      <div class="card-icon">🐠</div>
+      <h3 class="card-title">{{ section.settings.square_2_title | default: "Aqua Oasis" }}</h3>
+      <p class="card-desc">{{ section.settings.square_2_desc | default: "Custom neon aquariums." }}</p>
+      <a href="#" class="card-btn interactive-shape">Explore</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Geometric Collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Section Badge",
+      "default": "Geometric Realms of Luxury"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Premium Curated Kingdoms"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Explore our categories through standard premium geometric proportions. Experience pure architectural layout design."
+    },
+    {
+      "type": "header",
+      "content": "Big Circle Block"
+    },
+    {
+      "type": "text",
+      "id": "circle_1_title",
+      "label": "Big Circle Title",
+      "default": "Dog Palace"
+    },
+    {
+      "type": "textarea",
+      "id": "circle_1_desc",
+      "label": "Big Circle Description"
+    },
+    {
+      "type": "header",
+      "content": "Rectangle Block"
+    },
+    {
+      "type": "text",
+      "id": "rect_1_title",
+      "label": "Rectangle Title",
+      "default": "Cat Chateau"
+    },
+    {
+      "type": "textarea",
+      "id": "rect_1_desc",
+      "label": "Rectangle Description"
+    },
+    {
+      "type": "header",
+      "content": "Square Block"
+    },
+    {
+      "type": "text",
+      "id": "square_1_title",
+      "label": "Square Title",
+      "default": "Avian Mansion"
+    },
+    {
+      "type": "textarea",
+      "id": "square_1_desc",
+      "label": "Square Description"
+    },
+    {
+      "type": "header",
+      "content": "Small Circle Block"
+    },
+    {
+      "type": "text",
+      "id": "circle_2_title",
+      "label": "Small Circle Title",
+      "default": "Elite Play"
+    },
+    {
+      "type": "textarea",
+      "id": "circle_2_desc",
+      "label": "Small Circle Description"
+    },
+    {
+      "type": "header",
+      "content": "Square Rotated Block"
+    },
+    {
+      "type": "text",
+      "id": "square_2_title",
+      "label": "Square Rotated Title",
+      "default": "Aqua Oasis"
+    },
+    {
+      "type": "textarea",
+      "id": "square_2_desc",
+      "label": "Square Rotated Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Geometric Collections"
+    }
+  ]
+}
+{% endschema %}

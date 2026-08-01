@@ -1,0 +1,77 @@
+<section class="extravagant-promo section-padding" id="section-{{ section.id }}">
+  <div class="promo-container">
+    <!-- Visual Side with floating overlapping circles & rectangles -->
+    <div class="promo-visual-side">
+      <div class="promo-shape-art">
+        <div class="art-big-circle interactive-shape">
+          <div class="art-inner-text">
+            7-STAR<br>PETS
+          </div>
+        </div>
+        <div class="art-small-circle-top interactive-shape">👑</div>
+        <div class="art-rectangle-decor interactive-shape"></div>
+        <div class="art-square-neon interactive-shape"></div>
+      </div>
+    </div>
+
+    <!-- Text Side -->
+    <div class="promo-text-side">
+      <h2 class="promo-heading">
+        {{ section.settings.title | escape }}
+      </h2>
+      <p style="font-size: 1.2rem; margin-bottom: 2.5rem;">
+        {{ section.settings.description | escape }}
+      </p>
+
+      <ul class="promo-benefit-list">
+        <li class="promo-benefit-item">
+          <div class="promo-benefit-icon">✨</div>
+          <span>Bespoke 1-on-1 Lifestyle Concierge</span>
+        </li>
+        <li class="promo-benefit-item">
+          <div class="promo-benefit-icon">🌟</div>
+          <span>Ultra-Premium Hypoallergenic Materials Only</span>
+        </li>
+        <li class="promo-benefit-item">
+          <div class="promo-benefit-icon">🐾</div>
+          <span>Hand-stitched Signature Packaging & Delivery</span>
+        </li>
+      </ul>
+
+      <a href="#" class="btn-primary interactive-shape" style="margin-top: 1rem;">
+        {{ section.settings.button_label | default: "Claim Membership" }}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Extravagant Promo",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Promo Title",
+      "default": "The VIP Paws & Claws Club"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Promo Description",
+      "default": "Access an elite tier of membership crafted for pet owners who demand absolute excellence. From custom-sized garments to premium curated organic meal boxes, our VIP members experience pet care at a whole new dimension."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Claim Membership"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Extravagant Promo"
+    }
+  ]
+}
+{% endschema %}

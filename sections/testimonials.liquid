@@ -1,0 +1,88 @@
+<section class="testimonials section-padding" id="section-{{ section.id }}">
+  <div class="section-header">
+    <span class="section-badge">{{ section.settings.badge | escape }}</span>
+    <h2 class="section-title">{{ section.settings.title | escape }}</h2>
+    <p>{{ section.settings.description | escape }}</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <!-- Testimonial 1 -->
+    <div class="testimonial-card">
+      <div class="testimonial-avatar-wrapper">
+        <div class="testimonial-avatar">🐶</div>
+        <div class="testimonial-avatar-decor">🐾</div>
+      </div>
+      <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-quote">
+        "The Velvet Lounger is simply divine! I can finally nap in a manner befitting my heritage. Pure extravagance!"
+      </p>
+      <div class="testimonial-author-info">
+        <span class="testimonial-author">Winston III</span>
+        <span class="testimonial-author-breed">Royal French Bulldog</span>
+      </div>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="testimonial-card">
+      <div class="testimonial-avatar-wrapper">
+        <div class="testimonial-avatar">🐱</div>
+        <div class="testimonial-avatar-decor">👑</div>
+      </div>
+      <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-quote">
+        "I rarely express satisfaction, but the Swarovski harness made my evening stroll through the penthouse highly spectacular."
+      </p>
+      <div class="testimonial-author-info">
+        <span class="testimonial-author">Duchess Cleo</span>
+        <span class="testimonial-author-breed">Imperial Persian Cat</span>
+      </div>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="testimonial-card">
+      <div class="testimonial-avatar-wrapper">
+        <div class="testimonial-avatar">🦁</div>
+        <div class="testimonial-avatar-decor">⭐</div>
+      </div>
+      <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-quote">
+        "The gold-weave collar is extremely light, yet shines like a thousand suns. Absolutely brilliant and premium craftsmanship!"
+      </p>
+      <div class="testimonial-author-info">
+        <span class="testimonial-author">Maximus</span>
+        <span class="testimonial-author-breed">Bespoke Golden Retriever</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Section Badge",
+      "default": "Approved by Royalty"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Extravagant Pet Voices"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Hear directly from our most discerning four-legged connoisseurs who have experienced the Paws & Claws standard."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

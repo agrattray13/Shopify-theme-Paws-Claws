@@ -1,0 +1,53 @@
+<section class="newsletter section-padding" id="section-{{ section.id }}">
+  <div class="newsletter-frame">
+    <!-- Corner Circles -->
+    <div class="newsletter-circle-decor-1"></div>
+    <div class="newsletter-circle-decor-2"></div>
+
+    <div class="newsletter-content">
+      <h2 class="newsletter-title">{{ section.settings.title | escape }}</h2>
+      <p class="newsletter-description">{{ section.settings.description | escape }}</p>
+
+      {%- form 'customer', class: 'newsletter-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input 
+          type="email" 
+          name="contact[email]" 
+          class="newsletter-input" 
+          value="{{ form.email }}" 
+          placeholder="Enter your royal email..." 
+          aria-label="Email Address"
+          required
+        >
+        <button type="submit" class="newsletter-btn interactive-shape">
+          Join Court
+        </button>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Enter the Royal Court"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Subscribe to receive invitation-only previews of new collections, private sales, and extravagant pet lifestyle tips directly to your inbox."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

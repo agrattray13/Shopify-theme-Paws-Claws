@@ -1,0 +1,103 @@
+<footer class="footer-wrapper" id="section-{{ section.id }}">
+  <div class="footer-container">
+    <!-- Brand / Description Column -->
+    <div class="footer-brand-col">
+      <a href="{{ routes.root_url }}" class="footer-logo-link interactive-shape">
+        <div class="header-logo-icon">🐾</div>
+        <span>{{ section.settings.footer_logo_text | default: "PAWS & CLAWS" }}</span>
+      </a>
+      <p class="footer-description">
+        {{ section.settings.footer_description | default: "Redefining pet luxury with extravagant designs, premium products, and exceptional care. Only the best for your furry companions." }}
+      </p>
+      
+      <!-- Social links (extravagant animated bubbles) -->
+      <ul class="footer-social-links">
+        <li class="footer-social-item">
+          <a href="#" class="footer-social-link interactive-shape" aria-label="Instagram">📸</a>
+        </li>
+        <li class="footer-social-item">
+          <a href="#" class="footer-social-link interactive-shape" aria-label="Facebook">📘</a>
+        </li>
+        <li class="footer-social-item">
+          <a href="#" class="footer-social-link interactive-shape" aria-label="TikTok">🎵</a>
+        </li>
+        <li class="footer-social-item">
+          <a href="#" class="footer-social-link interactive-shape" aria-label="YouTube">📺</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Quick Links Column 1 -->
+    <div class="footer-links-col">
+      <h3 class="footer-col-title">Collections</h3>
+      <ul class="footer-links-list">
+        <li><a href="#" class="footer-link interactive-shape">The Dog Palace</a></li>
+        <li><a href="#" class="footer-link interactive-shape">The Cat Chateau</a></li>
+        <li><a href="#" class="footer-link interactive-shape">Bird Mansion</a></li>
+        <li><a href="#" class="footer-link interactive-shape">Aquatic Luxury</a></li>
+        <li><a href="#" class="footer-link interactive-shape">Bestsellers</a></li>
+      </ul>
+    </div>
+
+    <!-- Quick Links Column 2 -->
+    <div class="footer-links-col">
+      <h3 class="footer-col-title">About Us</h3>
+      <ul class="footer-links-list">
+        <li><a href="#" class="footer-link interactive-shape">Our Story</a></li>
+        <li><a href="#" class="footer-link interactive-shape">Sustainability</a></li>
+        <li><a href="#" class="footer-link interactive-shape">Pet Blog</a></li>
+        <li><a href="#" class="footer-link interactive-shape">Careers</a></li>
+        <li><a href="#" class="footer-link interactive-shape">Affiliates</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info Column -->
+    <div class="footer-contact-col">
+      <h3 class="footer-col-title">Get in Touch</h3>
+      <div class="footer-contact-info">
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📍</div>
+          <span>123 Extravagance Way, Pet Beverly Hills, CA 90210</span>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📞</div>
+          <span>+1 (800) PAW-LUXE</span>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">✉️</div>
+          <span>concierge@pawsandclaws.luxury</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p class="footer-copyright">
+      &copy; {{ 'now' | date: "%Y" }} Paws & Claws Premium Theme. All Rights Reserved. Designed for pure extravagance.
+    </p>
+    <p class="footer-payment-icons">
+      💳 💸 🇺🇸 🇬🇧 🇪🇺
+    </p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_logo_text",
+      "label": "Footer Logo Text",
+      "default": "PAWS & CLAWS"
+    },
+    {
+      "type": "textarea",
+      "id": "footer_description",
+      "label": "Footer Description",
+      "default": "Redefining pet luxury with extravagant designs, premium products, and exceptional care. Only the best for your furry companions."
+    }
+  ]
+}
+{% endschema %}

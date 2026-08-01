@@ -1,0 +1,130 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Paws & Claws Extravaganza",
+    "theme_version": "1.0.0",
+    "theme_author": "GitHub Copilot",
+    "theme_documentation_url": "https://github.com/agrattray13/Shopify-theme-Paws-Claws",
+    "theme_support_url": "https://github.com/agrattray13/Shopify-theme-Paws-Claws"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_bg_primary",
+        "label": "Primary Background",
+        "default": "#0f0c1b"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_secondary",
+        "label": "Secondary Background",
+        "default": "#1a1635"
+      },
+      {
+        "type": "color",
+        "id": "color_text_primary",
+        "label": "Primary Text",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_text_secondary",
+        "label": "Secondary Text",
+        "default": "#a9a4d8"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_teal",
+        "label": "Accent Teal",
+        "default": "#00f2fe"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_pink",
+        "label": "Accent Pink",
+        "default": "#fe019a"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_orange",
+        "label": "Accent Orange",
+        "default": "#ff8c00"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_purple",
+        "label": "Accent Purple",
+        "default": "#7b2cbf"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border Color",
+        "default": "rgba(255, 255, 255, 0.1)"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon Image",
+        "info": "Will be scaled down to 32x32px"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo"
+      }
+    ]
+  }
+]

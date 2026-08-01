@@ -1,0 +1,36 @@
+<div class="product-page section-padding" style="max-width: 1400px; margin: 0 auto;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+    <!-- Product Gallery -->
+    <div class="product-gallery">
+      <div class="showcase-img-placeholder" style="aspect-ratio: 1/1; border: 2px solid var(--color-accent-teal); box-shadow: 0 0 30px rgba(0, 242, 254, 0.2);">
+        <div class="showcase-img-shape" style="border-radius: 50%; background: radial-gradient(circle, var(--color-accent-purple) 0%, transparent 70%);"></div>
+        <span class="showcase-img-icon" style="font-size: 8rem;">👑</span>
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-info">
+      <span class="section-badge" style="margin-bottom: 1rem;">Limited Edition Masterpiece</span>
+      <h1 class="product-title" style="font-size: 4rem; margin-bottom: 1.5rem;">{{ product.title | default: "The Imperial Gold Dog Throne" }}</h1>
+      
+      <div class="product-price" style="font-family: var(--font-accent-family); font-weight: 700; font-size: 2rem; color: var(--color-accent-pink); margin-bottom: 2rem;">
+        {{ product.price | money | default: "$4,500.00" }}
+      </div>
+
+      <p class="product-description" style="font-size: 1.15rem; margin-bottom: 2.5rem;">
+        {{ product.description | default: "The ultimate peak of canine comfort. Hand-carved solid mahogany frame plated in authentic 24k gold leaf, upholstered with fine diamond-tufted royal purple velvet. Features custom orthopedic support cushions designed for royal dogs." }}
+      </p>
+
+      <button type="button" class="btn-primary interactive-shape" style="width: 100%; max-width: 400px;">
+        Add to Royal Cart
+      </button>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main Product",
+  "settings": []
+}
+{% endschema %}

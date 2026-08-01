@@ -1,0 +1,61 @@
+<div class="collection-page section-padding" style="max-width: 1400px; margin: 0 auto;">
+  <div class="section-header">
+    <span class="section-badge">Bespoke Curation</span>
+    <h1 class="section-title">{{ collection.title | default: "The Dog Palace" }}</h1>
+    <p>{{ collection.description | default: "Only the finest and most extravagant articles, handpicked for exceptional pets." }}</p>
+  </div>
+
+  <div class="showcase-grid">
+    <!-- Item 1 -->
+    <div class="showcase-card">
+      <div class="showcase-img-placeholder">
+        <div class="showcase-img-shape"></div>
+        <span class="showcase-img-icon">🐾</span>
+      </div>
+      <div class="showcase-pet-name">Dog Premium</div>
+      <h3 class="showcase-title">Royal Silk Pillow</h3>
+      <p>Made from authentic hand-spun mulberry silk for unmatched napping experiences.</p>
+      <div class="showcase-price">
+        <span>$450.00</span>
+        <button type="button" class="showcase-add-to-cart interactive-shape" aria-label="Add to cart">＋</button>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="showcase-card">
+      <div class="showcase-img-placeholder">
+        <div class="showcase-img-shape"></div>
+        <span class="showcase-img-icon">🥎</span>
+      </div>
+      <div class="showcase-pet-name">Dog Play</div>
+      <h3 class="showcase-title">Gold-Flecked Play Ball</h3>
+      <p>Featuring active micro-sparkle luxury gold flakes. Highly bouncy and durable.</p>
+      <div class="showcase-price">
+        <span>$180.00</span>
+        <button type="button" class="showcase-add-to-cart interactive-shape" aria-label="Add to cart">＋</button>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="showcase-card">
+      <div class="showcase-img-placeholder">
+        <div class="showcase-img-shape"></div>
+        <span class="showcase-img-icon">💎</span>
+      </div>
+      <div class="showcase-pet-name">Luxury Grooming</div>
+      <h3 class="showcase-title">Silver Bristle Comb</h3>
+      <p>Solid silver handle with soft cashmere bristles, perfect for imperial coats.</p>
+      <div class="showcase-price">
+        <span>$320.00</span>
+        <button type="button" class="showcase-add-to-cart interactive-shape" aria-label="Add to cart">＋</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main Collection",
+  "settings": []
+}
+{% endschema %}
