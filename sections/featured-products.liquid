@@ -1,0 +1,140 @@
+<!-- sections/featured-products.liquid -->
+<section class="py-20 bg-customBgSec border-t border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    
+    <!-- Header info -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+      <div class="space-y-4 max-w-xl text-center md:text-left">
+        <div class="inline-flex items-center gap-1.5 text-primary text-sm font-bold uppercase tracking-wider" data-aos="fade-right">
+          <i class="fa-solid fa-heart"></i> Vet-Recommended Favorites
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black font-heading text-customText" data-aos="fade-right" data-aos-delay="100">
+          Our Best Selling <span class="text-primary">Pet Goods</span>
+        </h2>
+        <p class="text-customTextMuted font-medium" data-aos="fade-right" data-aos-delay="200">
+          Curated premium collection built to elevate the life, health, and joy of your cats and dogs.
+        </p>
+      </div>
+
+      <div class="flex justify-center md:justify-end" data-aos="fade-left" data-aos-delay="300">
+        <a href="{{ routes.all_products_collection_url }}" class="bg-white border border-gray-200 hover:border-primary hover:text-primary font-bold py-3.5 px-7 rounded-full shadow-sm hover:shadow-md transition-all flex items-center gap-2">
+          <span>View All Products</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {%- assign featured_collection = collections[section.settings.collection] -%}
+      {%- if featured_collection != blank and featured_collection.products_count > 0 -%}
+        {%- for product in featured_collection.products limit: 4 -%}
+          <!-- Real Product Cards -->
+          {% render 'product-card', product: product, index: forloop.index %}
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Mock/Placeholder Premium Products -->
+        {%- for i in (1..4) -%}
+          {%- liquid
+            case i
+              when 1
+                assign title = "Super-Chewer Natural Rubber Bone"
+                assign price = "$19.99"
+                assign icon = "fa-bone"
+                assign color_cls = "bg-orange-100 text-primary"
+                assign badge = "Sale 🐾"
+              when 2
+                assign title = "Cozy Cloud Orthopedic Cat Bed"
+                assign price = "$49.99"
+                assign icon = "fa-cat"
+                assign color_cls = "bg-blue-100 text-secondary"
+                assign badge = "Popular"
+              when 3
+                assign title = "Premium Grain-Free Wild Salmon Feast"
+                assign price = "$29.99"
+                assign icon = "fa-fish"
+                assign color_cls = "bg-amber-100 text-accent"
+                assign badge = "Hot"
+              when 4
+                assign title = "Double-Decker Fun Feather Wand Toy"
+                assign price = "$14.99"
+                assign icon = "fa-feather"
+                assign color_cls = "bg-emerald-100 text-emerald-500"
+                assign badge = ""
+            endcase
+          -%}
+          
+          <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col p-4 relative" data-aos="fade-up" data-aos-delay="{{ i | multiply: 100 }}">
+            
+            {% if badge != blank %}
+              <span class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full z-10 shadow-sm uppercase tracking-wider">
+                {{ badge }}
+              </span>
+            {% endif %}
+
+            <!-- Custom Wishlist bubble -->
+            <button class="absolute top-4 right-4 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-300 hover:text-red-500 hover:shadow-md shadow-sm border border-gray-50 transition-all z-10">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <!-- Product Image / Graphics wrapper -->
+            <div class="w-full aspect-square rounded-2xl overflow-hidden mb-6 flex-shrink-0 relative bg-gray-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+              <div class="w-24 h-20 {{ color_cls }} rounded-full flex items-center justify-center text-5xl float-animation">
+                <i class="fa-solid {{ icon }}"></i>
+              </div>
+            </div>
+
+            <!-- Title & Star Rating -->
+            <div class="flex-grow flex flex-col">
+              <div class="flex items-center gap-1 text-accent text-xs mb-2">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <span class="text-customTextMuted font-bold ml-1">5.0</span>
+              </div>
+              <h3 class="font-heading font-black text-base text-customText leading-snug group-hover:text-primary transition-colors duration-200">
+                {{ title }}
+              </h3>
+              <p class="text-xs text-customTextMuted font-medium mt-1 truncate">Vet-formulated health &amp; safety</p>
+            </div>
+
+            <!-- Price and Buy Buttons -->
+            <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-50">
+              <span class="text-lg font-black text-customText">{{ price }}</span>
+              
+              <form action="/cart/add" method="post">
+                <input type="hidden" name="id" value="{{ i }}">
+                <button type="submit" class="ajax-add-to-cart-btn bg-primary/10 hover:bg-primary hover:text-white text-primary rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-inner hover:shadow-md" aria-label="Add to cart">
+                  <i class="fa-solid fa-plus text-sm"></i>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}

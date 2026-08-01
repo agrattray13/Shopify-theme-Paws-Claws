@@ -1,0 +1,117 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Claws and Paws Premium",
+    "theme_version": "1.0.0",
+    "theme_author": "Premium Themes Co.",
+    "theme_documentation_url": "https://help.shopify.com",
+    "theme_support_url": "https://support.shopify.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Brand Color",
+        "default": "#ff6f61"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Brand Color",
+        "default": "#4a90e2"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent Color",
+        "default": "#feb236"
+      },
+      {
+        "type": "header",
+        "content": "Background & Text"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Body Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_secondary",
+        "label": "Secondary Background",
+        "default": "#f9f9fb"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Body Text",
+        "default": "#2d3748"
+      },
+      {
+        "type": "color",
+        "id": "color_text_muted",
+        "label": "Muted Text",
+        "default": "#718096"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Fonts"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading Font",
+        "default": "work_sans_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body Font",
+        "default": "work_sans_n4"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social Links"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram Link",
+        "default": "https://instagram.com/clawsandpaws"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook Link",
+        "default": "https://facebook.com/clawsandpaws"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest Link"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter",
+        "label": "Twitter/X Link"
+      }
+    ]
+  }
+]

@@ -1,0 +1,161 @@
+<!-- sections/main-collection.liquid -->
+<section class="bg-customBgSec py-12 border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 text-center space-y-4">
+    <h1 class="text-3xl sm:text-5xl font-black font-heading text-customText">
+      {%- if collection != blank -%}{{ collection.title }}{%- else -%}Premium Pet Supplies{%- endif -%}
+    </h1>
+    <p class="text-sm sm:text-base text-customTextMuted font-medium max-w-xl mx-auto">
+      {%- if collection.description != blank -%}{{ collection.description }}{%- else -%}Explore our catalog of premium quality foods, ultra-durable fetch toys, orthopedic pet beds, and smart accessories.{%- endif -%}
+    </p>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    
+    <div class="flex flex-col lg:flex-row gap-10">
+      
+      <!-- Side Filter Banner (Decorative & Premium style) -->
+      <aside class="w-full lg:w-64 flex-shrink-0 space-y-8" data-aos="fade-right">
+        <!-- filter block 1 -->
+        <div class="bg-customBgSec rounded-3xl p-6 border border-gray-100 space-y-4 shadow-sm">
+          <h3 class="font-heading font-black text-base text-customText flex items-center justify-between border-b border-gray-200 pb-2">
+            <span>Filter by Species</span>
+            <i class="fa-solid fa-paw text-xs text-primary"></i>
+          </h3>
+          <ul class="space-y-2.5 text-sm font-semibold text-customTextMuted">
+            <li class="flex items-center justify-between hover:text-primary transition-colors cursor-pointer"><label class="flex items-center gap-2"><input type="checkbox" class="accent-primary"> Dogs</label> <span class="text-xs bg-white py-0.5 px-2 rounded-full shadow-sm">12</span></li>
+            <li class="flex items-center justify-between hover:text-primary transition-colors cursor-pointer"><label class="flex items-center gap-2"><input type="checkbox" class="accent-primary"> Cats</label> <span class="text-xs bg-white py-0.5 px-2 rounded-full shadow-sm">8</span></li>
+            <li class="flex items-center justify-between hover:text-primary transition-colors cursor-pointer"><label class="flex items-center gap-2"><input type="checkbox" class="accent-primary"> Fish</label> <span class="text-xs bg-white py-0.5 px-2 rounded-full shadow-sm">4</span></li>
+            <li class="flex items-center justify-between hover:text-primary transition-colors cursor-pointer"><label class="flex items-center gap-2"><input type="checkbox" class="accent-primary"> Birds</label> <span class="text-xs bg-white py-0.5 px-2 rounded-full shadow-sm">3</span></li>
+          </ul>
+        </div>
+
+        <!-- promo block -->
+        <div class="rounded-3xl p-6 bg-gradient-to-tr from-primary to-accent text-white space-y-4 shadow-lg text-center relative overflow-hidden">
+          <div class="absolute -bottom-6 -right-6 text-white/15 text-8xl pointer-events-none transform rotate-12">
+            <i class="fa-solid fa-dog"></i>
+          </div>
+          <h4 class="font-heading font-black text-lg">15% discount for your Pet Parents Club!</h4>
+          <p class="text-xs text-orange-50 font-medium">Use code: <span class="font-bold text-white bg-slate-900/20 py-1 px-3.5 rounded-full inline-block mt-1">PAWSDAY15</span></p>
+        </div>
+      </aside>
+
+      <!-- Products Listing Grid -->
+      <div class="flex-grow">
+        {%- if collection != blank and collection.products_count > 0 -%}
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {%- for product in collection.products -%}
+              {% render 'product-card', product: product, index: forloop.index %}
+            {%- endfor -%}
+          </div>
+        {%- else -%}
+          <!-- Fallback Products Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {%- for i in (1..6) -%}
+              {%- liquid
+                case i
+                  when 1
+                    assign title = "Super-Chewer Natural Rubber Bone"
+                    assign price = "$19.99"
+                    assign icon = "fa-bone"
+                    assign color_cls = "bg-orange-100 text-primary"
+                    assign badge = "Sale 🐾"
+                  when 2
+                    assign title = "Cozy Cloud Orthopedic Cat Bed"
+                    assign price = "$49.99"
+                    assign icon = "fa-cat"
+                    assign color_cls = "bg-blue-100 text-secondary"
+                    assign badge = "Popular"
+                  when 3
+                    assign title = "Premium Grain-Free Wild Salmon Feast"
+                    assign price = "$29.99"
+                    assign icon = "fa-fish"
+                    assign color_cls = "bg-amber-100 text-accent"
+                    assign badge = "Hot"
+                  when 4
+                    assign title = "Double-Decker Fun Feather Wand Toy"
+                    assign price = "$14.99"
+                    assign icon = "fa-feather"
+                    assign color_cls = "bg-emerald-100 text-emerald-500"
+                    assign badge = ""
+                  when 5
+                    assign title = "Eco-Friendly Hemp Training Harness"
+                    assign price = "$24.99"
+                    assign icon = "fa-shield-dog"
+                    assign color_cls = "bg-orange-50 text-primary"
+                    assign badge = "New"
+                  when 6
+                    assign title = "Stainless Steel Quiet Drinking Fountain"
+                    assign price = "$39.99"
+                    assign icon = "fa-faucet-drip"
+                    assign color_cls = "bg-blue-50 text-secondary"
+                    assign badge = ""
+                endcase
+              -%}
+              
+              <div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col p-4 relative" data-aos="fade-up" data-aos-delay="{{ i | multiply: 100 }}">
+                
+                {% if badge != blank %}
+                  <span class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full z-10 shadow-sm uppercase tracking-wider">
+                    {{ badge }}
+                  </span>
+                {% endif %}
+
+                <!-- Wishlist -->
+                <button class="absolute top-4 right-4 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-300 hover:text-red-500 hover:shadow-md shadow-sm border border-gray-50 transition-all z-10">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+
+                <!-- Image -->
+                <div class="w-full aspect-square rounded-2xl overflow-hidden mb-6 flex-shrink-0 relative bg-gray-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                  <div class="w-20 h-16 {{ color_cls }} rounded-full flex items-center justify-center text-4xl float-animation">
+                    <i class="fa-solid {{ icon }}"></i>
+                  </div>
+                </div>
+
+                <!-- Info -->
+                <div class="flex-grow flex flex-col">
+                  <div class="flex items-center gap-1 text-accent text-xs mb-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-customTextMuted font-bold ml-1">5.0</span>
+                  </div>
+                  <h3 class="font-heading font-black text-base text-customText leading-snug group-hover:text-primary transition-colors duration-200">
+                    {{ title }}
+                  </h3>
+                  <p class="text-xs text-customTextMuted font-medium mt-1">Premium Quality Vet-Approved</p>
+                </div>
+
+                <!-- Pricing / Form add -->
+                <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-50">
+                  <span class="text-lg font-black text-customText">{{ price }}</span>
+                  
+                  <form action="/cart/add" method="post">
+                    <input type="hidden" name="id" value="{{ i }}">
+                    <button type="submit" class="ajax-add-to-cart-btn bg-primary/10 hover:bg-primary hover:text-white text-primary rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-inner hover:shadow-md" aria-label="Add to cart">
+                      <i class="fa-solid fa-plus text-sm"></i>
+                    </button>
+                  </form>
+                </div>
+
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "settings": []
+}
+{% endschema %}

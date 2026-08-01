@@ -1,0 +1,143 @@
+<!-- sections/main-contact.liquid -->
+<section class="bg-customBgSec py-12 border-b border-gray-100 text-center space-y-4">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="inline-flex items-center gap-1.5 text-primary text-xs font-bold uppercase tracking-wider bg-primary/10 py-1.5 px-4 rounded-full" data-aos="fade-down">
+      <i class="fa-solid fa-headset"></i> We're Here to Help
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-black font-heading text-customText leading-tight mt-3">
+      Get in Touch with Our <span class="text-primary">Pet Experts</span>
+    </h1>
+    <p class="text-sm sm:text-base text-customTextMuted font-semibold max-w-xl mx-auto leading-relaxed">
+      Have a question about nutritional recipes, order delivery, or chew toys? Send us a message and our team will get back to you within 24 hours.
+    </p>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    
+    <!-- Contact Form Column (Left 7 cols) -->
+    <div class="lg:col-span-7 bg-customBgSec rounded-[2.5rem] p-8 sm:p-12 border border-gray-100 shadow-sm" data-aos="fade-right">
+      <h3 class="font-heading font-black text-2xl text-customText mb-8">Send a Message 🐾</h3>
+      
+      {%- form 'contact', class: 'space-y-6' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="bg-green-100 border border-green-400 text-green-700 p-4 rounded-2xl text-sm font-semibold flex items-center gap-3">
+            <i class="fa-solid fa-circle-check text-lg"></i>
+            <div>
+              <p class="font-bold">Thanks for reaching out!</p>
+              <p class="text-xs font-medium">{{ 'general.contact.success' | t }}</p>
+            </div>
+          </div>
+        {%- else -%}
+          {%- if form.errors -%}
+            <div class="bg-red-100 border border-red-400 text-red-700 p-4 rounded-2xl text-sm font-semibold">
+              <p class="font-bold mb-1"><i class="fa-solid fa-triangle-exclamation"></i> {{ 'general.contact.error' | t }}</p>
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="ContactFormName" class="block text-xs font-bold text-customText uppercase tracking-wider">{{ 'general.contact.name' | t }}</label>
+              <input type="text" name="contact[name]" id="ContactFormName" value="{% if form.name %}{{ form.name }}{% endif %}" required class="w-full bg-white border border-gray-200 rounded-full px-5 py-3.5 focus:outline-none focus:border-primary transition-all text-sm font-semibold text-customText" placeholder="Your name...">
+            </div>
+            
+            <div class="space-y-2">
+              <label for="ContactFormEmail" class="block text-xs font-bold text-customText uppercase tracking-wider">{{ 'general.contact.email' | t }}</label>
+              <input type="email" name="contact[email]" id="ContactFormEmail" value="{% if form.email %}{{ form.email }}{% endif %}" required class="w-full bg-white border border-gray-200 rounded-full px-5 py-3.5 focus:outline-none focus:border-primary transition-all text-sm font-semibold text-customText" placeholder="Your email...">
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label for="ContactFormPhone" class="block text-xs font-bold text-customText uppercase tracking-wider">{{ 'general.contact.phone' | t }}</label>
+            <input type="tel" name="contact[phone]" id="ContactFormPhone" value="{% if form.phone %}{{ form.phone }}{% endif %}" class="w-full bg-white border border-gray-200 rounded-full px-5 py-3.5 focus:outline-none focus:border-primary transition-all text-sm font-semibold text-customText" placeholder="Your phone number...">
+          </div>
+
+          <div class="space-y-2">
+            <label for="ContactFormMessage" class="block text-xs font-bold text-customText uppercase tracking-wider">{{ 'general.contact.message' | t }}</label>
+            <textarea name="contact[body]" id="ContactFormMessage" rows="6" required class="w-full bg-white border border-gray-200 rounded-3xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm font-semibold text-customText" placeholder="How can we help you and your fur baby?"></textarea>
+          </div>
+
+          <div class="pt-4">
+            <button type="submit" class="w-full sm:w-auto bg-primary hover:bg-opacity-90 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>{{ 'general.contact.send' | t }}</span>
+            </button>
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+
+    </div>
+
+    <!-- Contact Info Column (Right 5 cols) -->
+    <div class="lg:col-span-5 space-y-8" data-aos="fade-left" data-aos-delay="200">
+      
+      <!-- Box 1: Support Info -->
+      <div class="bg-customBgSec border border-gray-100 rounded-3xl p-8 space-y-6 shadow-sm">
+        <h4 class="font-heading font-black text-xl text-customText border-b border-gray-200/60 pb-3 flex justify-between">
+          <span>Pet Headquarters</span>
+          <i class="fa-solid fa-store text-xs text-primary"></i>
+        </h4>
+        
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-primary text-sm flex-shrink-0">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <p class="text-xs font-black text-customText">Our Flagship Store</p>
+              <p class="text-sm text-customTextMuted font-medium mt-0.5">123 Cozy Paw Lane, Suite 101, Petropolis, CA 90210</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-secondary text-sm flex-shrink-0">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div>
+              <p class="text-xs font-black text-customText">Call Our Pet Experts</p>
+              <p class="text-sm text-customTextMuted font-medium mt-0.5">+1 (800) 555-PAWS (7297)</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-accent text-sm flex-shrink-0">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <p class="text-xs font-black text-customText">Email Support Desk</p>
+              <p class="text-sm text-customTextMuted font-medium mt-0.5">hello@clawsandpaws.com</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Box 2: Opening Hours -->
+      <div class="bg-slate-900 text-white rounded-3xl p-8 space-y-4 shadow-xl">
+        <h4 class="font-heading font-black text-lg">🐾 Store Hours</h4>
+        <div class="divide-y divide-slate-800 text-sm font-medium text-gray-400">
+          <div class="flex justify-between py-2.5">
+            <span>Monday - Friday</span>
+            <span class="text-white font-bold">8:00 AM - 7:00 PM</span>
+          </div>
+          <div class="flex justify-between py-2.5">
+            <span>Saturday</span>
+            <span class="text-white font-bold">9:00 AM - 6:00 PM</span>
+          </div>
+          <div class="flex justify-between py-2.5">
+            <span>Sunday</span>
+            <span class="text-primary font-black">10:00 AM - 4:00 PM (Paw Day!)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Page Form",
+  "settings": []
+}
+{% endschema %}

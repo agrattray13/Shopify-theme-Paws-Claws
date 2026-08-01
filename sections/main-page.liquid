@@ -1,0 +1,24 @@
+<!-- sections/main-page.liquid -->
+<section class="py-16 sm:py-24 bg-white">
+  <div class="max-w-3xl mx-auto px-6" data-aos="fade-up">
+    <h1 class="text-3xl sm:text-5xl font-black font-heading text-customText leading-tight text-center mb-8">
+      {%- if page != blank -%}{{ page.title }}{%- else -%}Claws &amp; Paws Info Page{%- endif -%}
+    </h1>
+    
+    <div class="prose prose-orange max-w-none text-base sm:text-lg text-customTextMuted leading-relaxed font-medium space-y-6">
+      {%- if page != blank -%}
+        {{ page.content }}
+      {%- else -%}
+        <p>Welcome to Claws and Paws Pet Supplies a Premium Theme! This is a standard info page. Customize this page directly from your Shopify admin panel by navigating to Online Store &gt; Pages.</p>
+        <p>We are dedicated to producing the highest quality content and products for your animals.</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Default Page details",
+  "settings": []
+}
+{% endschema %}

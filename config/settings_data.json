@@ -1,0 +1,16 @@
+{
+  "current": {
+    "color_primary": "#ff6f61",
+    "color_secondary": "#4a90e2",
+    "color_accent": "#feb236",
+    "color_bg": "#ffffff",
+    "color_bg_secondary": "#f9f9fb",
+    "color_text": "#2d3748",
+    "color_text_muted": "#718096",
+    "social_instagram": "https://instagram.com/clawsandpaws",
+    "social_facebook": "https://facebook.com/clawsandpaws",
+    "social_pinterest": "",
+    "social_twitter": ""
+  },
+  "presets": {}
+}

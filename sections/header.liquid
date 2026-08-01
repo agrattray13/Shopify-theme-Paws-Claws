@@ -1,0 +1,134 @@
+<!-- sections/header.liquid -->
+<header class="sticky-header bg-white border-b border-gray-100 py-4 px-6 md:px-12 transition-all">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    
+    <!-- Hamburger Button (Mobile) -->
+    <button id="MobileMenuToggle" class="md:hidden text-customText hover:text-primary transition-colors text-2xl p-2 rounded-lg" aria-label="Open mobile menu">
+      <i class="fa-solid fa-bars-staggered"></i>
+    </button>
+
+    <!-- Logo Section -->
+    <a href="{{ routes.root_url }}" class="flex items-center gap-2 group">
+      <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl group-hover:scale-110 transition-transform shadow-inner relative">
+        <i class="fa-solid fa-paw"></i>
+        <!-- Ripple effect on logo hover -->
+        <span class="absolute inset-0 bg-primary/20 rounded-full scale-0 group-hover:scale-150 group-hover:opacity-0 transition-all duration-700"></span>
+      </div>
+      <span class="font-heading font-bold text-xl sm:text-2xl text-customText group-hover:text-primary transition-colors tracking-tight">
+        Claws <span class="text-primary">&amp;</span> Paws
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-8 font-semibold text-sm tracking-wide text-customText">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <div class="relative group">
+          <a href="{{ link.url }}" class="hover:text-primary transition-colors flex items-center gap-1.5 py-2">
+            {{ link.title }}
+            {%- if link.links != blank -%}
+              <i class="fa-solid fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+            {%- endif -%}
+          </a>
+
+          <!-- Dropdowns (if nesting is used) -->
+          {%- if link.links != blank -%}
+            <div class="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-100 rounded-2xl shadow-xl py-3 transform scale-95 opacity-0 pointer-events-none group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+              {%- for child_link in link.links -%}
+                <a href="{{ child_link.url }}" class="block px-6 py-2 hover:bg-customBgSec hover:text-primary text-sm text-customText font-medium transition-colors">
+                  {{ child_link.title }}
+                </a>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <!-- Fallback menu if menu settings aren't set yet -->
+        <a href="{{ routes.all_products_collection_url }}" class="hover:text-primary transition-colors py-2">Shop</a>
+        <a href="/pages/about" class="hover:text-primary transition-colors py-2">About Us</a>
+        <a href="/blogs/news" class="hover:text-primary transition-colors py-2">Blog</a>
+        <a href="/pages/contact" class="hover:text-primary transition-colors py-2">Contact</a>
+      {%- endfor -%}
+    </nav>
+
+    <!-- Header Actions (Search, Account, Cart) -->
+    <div class="flex items-center gap-2 sm:gap-4 text-customText">
+      <!-- Search Trigger Modal / Dropdown -->
+      <form action="{{ routes.search_url }}" method="get" role="search" class="hidden lg:flex items-center relative bg-customBgSec border border-gray-100 rounded-full px-4 py-1.5 focus-within:border-primary/50 transition-colors w-64">
+        <input type="text" name="q" placeholder="{{ 'general.search.placeholder' | t }}" class="bg-transparent text-sm text-customText focus:outline-none w-full pr-6">
+        <button type="submit" class="absolute right-4 text-customTextMuted hover:text-primary transition-colors">
+          <i class="fa-solid fa-magnifying-glass text-xs"></i>
+        </button>
+      </form>
+
+      <!-- Cart Icon Trigger with Badge -->
+      <button class="open-cart-drawer relative w-11 h-11 bg-customBgSec rounded-full flex items-center justify-center text-customText hover:text-primary hover:bg-primary/10 transition-all group">
+        <i class="fa-solid fa-cart-shopping text-sm group-hover:animate-bounce"></i>
+        <span class="cart-item-count absolute -top-1.5 -right-1.5 bg-primary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md {% if cart.item_count == 0 %}hidden{% endif %}">
+          {{ cart.item_count }}
+        </span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile Navigation Menu Drawer -->
+<div id="MobileMenuDrawer" class="fixed inset-0 z-50 bg-black/50 hidden translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+  <div class="absolute right-0 top-0 w-80 max-w-[85vw] h-full bg-white shadow-2xl flex flex-col p-6 space-y-8">
+    <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+      <span class="font-heading font-bold text-lg text-customText">Menu 🐾</span>
+      <button id="CloseMobileMenu" class="text-customTextMuted hover:text-primary text-xl p-2 rounded-full hover:bg-gray-100">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Links -->
+    <nav class="flex flex-col space-y-4 font-bold text-lg text-customText">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <div class="flex flex-col">
+          <div class="flex justify-between items-center py-1">
+            <a href="{{ link.url }}" class="hover:text-primary transition-colors">{{ link.title }}</a>
+          </div>
+          {%- if link.links != blank -%}
+            <div class="pl-4 mt-2 flex flex-col space-y-2 border-l-2 border-gray-100">
+              {%- for child_link in link.links -%}
+                <a href="{{ child_link.url }}" class="text-sm font-semibold text-customTextMuted hover:text-primary transition-colors py-1">
+                  {{ child_link.title }}
+                </a>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <a href="{{ routes.all_products_collection_url }}" class="hover:text-primary transition-colors py-1">Shop</a>
+        <a href="/pages/about" class="hover:text-primary transition-colors py-1">About Us</a>
+        <a href="/blogs/news" class="hover:text-primary transition-colors py-1">Blog</a>
+        <a href="/pages/contact" class="hover:text-primary transition-colors py-1">Contact</a>
+      {%- endfor -%}
+    </nav>
+
+    <!-- Mobile Search -->
+    <div class="pt-6 border-t border-gray-100 mt-auto">
+      <form action="{{ routes.search_url }}" method="get" class="flex items-center relative bg-customBgSec border border-gray-100 rounded-full px-4 py-2.5">
+        <input type="text" name="q" placeholder="{{ 'general.search.placeholder' | t }}" class="bg-transparent text-sm text-customText focus:outline-none w-full pr-8">
+        <button type="submit" class="absolute right-4 text-customTextMuted hover:text-primary transition-colors">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

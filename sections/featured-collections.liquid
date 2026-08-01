@@ -1,0 +1,82 @@
+<!-- sections/featured-collections.liquid -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    
+    <!-- Heading with cute paw graphic -->
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+      <div class="flex items-center justify-center gap-1.5 text-primary text-sm font-bold uppercase tracking-wider" data-aos="fade-up">
+        <i class="fa-solid fa-bone"></i> Explore Categories
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-black font-heading text-customText" data-aos="fade-up" data-aos-delay="100">
+        Shop by <span class="text-primary">Pet Category</span>
+      </h2>
+      <p class="text-customTextMuted font-medium" data-aos="fade-up" data-aos-delay="200">
+        Find premium goods specifically designed for your pet’s physical wellness and playful spirit.
+      </p>
+    </div>
+
+    <!-- Collections Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+      
+      <!-- Box 1: Dogs -->
+      <div class="group relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-full aspect-square rounded-[2rem] bg-orange-50 border border-orange-100 flex items-center justify-center text-primary text-6xl group-hover:scale-105 group-hover:rotate-2 transition-all duration-300 shadow-sm group-hover:shadow-md cursor-pointer relative overflow-hidden">
+          <!-- background subtle pattern -->
+          <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ff6f61_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          <i class="fa-solid fa-dog relative z-10 transition-transform duration-300 group-hover:scale-110"></i>
+        </div>
+        <h3 class="font-heading font-black text-lg text-customText mt-4 group-hover:text-primary transition-colors">Dog Supplies</h3>
+        <span class="text-xs text-customTextMuted font-bold uppercase mt-1 tracking-wider">Shop Now <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+        <a href="/collections/dogs" class="absolute inset-0" aria-label="Shop Dogs"></a>
+      </div>
+
+      <!-- Box 2: Cats -->
+      <div class="group relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="w-full aspect-square rounded-[2rem] bg-blue-50 border border-blue-100 flex items-center justify-center text-secondary text-6xl group-hover:scale-105 group-hover:-rotate-2 transition-all duration-300 shadow-sm group-hover:shadow-md cursor-pointer relative overflow-hidden">
+          <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#4a90e2_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          <i class="fa-solid fa-cat relative z-10 transition-transform duration-300 group-hover:scale-110"></i>
+        </div>
+        <h3 class="font-heading font-black text-lg text-customText mt-4 group-hover:text-secondary transition-colors">Cat Accessories</h3>
+        <span class="text-xs text-customTextMuted font-bold uppercase mt-1 tracking-wider">Shop Now <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+        <a href="/collections/cats" class="absolute inset-0" aria-label="Shop Cats"></a>
+      </div>
+
+      <!-- Box 3: Healthy Treats -->
+      <div class="group relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="w-full aspect-square rounded-[2rem] bg-amber-50 border border-amber-100 flex items-center justify-center text-accent text-6xl group-hover:scale-105 group-hover:rotate-2 transition-all duration-300 shadow-sm group-hover:shadow-md cursor-pointer relative overflow-hidden">
+          <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#feb236_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          <i class="fa-solid fa-bone relative z-10 transition-transform duration-300 group-hover:scale-110"></i>
+        </div>
+        <h3 class="font-heading font-black text-lg text-customText mt-4 group-hover:text-accent transition-colors">Healthy Treats</h3>
+        <span class="text-xs text-customTextMuted font-bold uppercase mt-1 tracking-wider">Shop Now <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+        <a href="/collections/treats" class="absolute inset-0" aria-label="Shop Treats"></a>
+      </div>
+
+      <!-- Box 4: Small Animals -->
+      <div class="group relative flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
+        <div class="w-full aspect-square rounded-[2rem] bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-500 text-6xl group-hover:scale-105 group-hover:-rotate-2 transition-all duration-300 shadow-sm group-hover:shadow-md cursor-pointer relative overflow-hidden">
+          <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          <i class="fa-solid fa-fish relative z-10 transition-transform duration-300 group-hover:scale-110"></i>
+        </div>
+        <h3 class="font-heading font-black text-lg text-customText mt-4 group-hover:text-emerald-500 transition-colors">Small Pets</h3>
+        <span class="text-xs text-customTextMuted font-bold uppercase mt-1 tracking-wider">Shop Now <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+        <a href="/collections/small-pets" class="absolute inset-0" aria-label="Shop Small Pets"></a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collections",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Featured Collections",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

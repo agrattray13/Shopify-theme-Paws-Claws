@@ -1,0 +1,51 @@
+<!-- sections/scrolling-text.liquid -->
+<section class="bg-slate-950 text-white py-6 overflow-hidden select-none border-y border-slate-900 relative">
+  <!-- Subtle back lights -->
+  <div class="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 pointer-events-none"></div>
+
+  <div class="marquee-wrapper relative z-10">
+    <div class="marquee-content flex items-center gap-12 font-heading font-black text-lg sm:text-2xl uppercase tracking-widest text-slate-100">
+      
+      {%- for i in (1..3) -%} <!-- Repeat 3 times to guarantee smooth continuous wrap -->
+        <span class="flex items-center gap-4">
+          <span>FREE SHIPPING OVER $50 🚚</span>
+        </span>
+        <span class="text-primary"><i class="fa-solid fa-paw"></i></span>
+        
+        <span class="flex items-center gap-4">
+          <span>100% ORGANIC PET FOOD 🍖</span>
+        </span>
+        <span class="text-secondary"><i class="fa-solid fa-heart"></i></span>
+        
+        <span class="flex items-center gap-4">
+          <span>VET APPROVED BRANDS 🏥</span>
+        </span>
+        <span class="text-accent"><i class="fa-solid fa-certificate"></i></span>
+
+        <span class="flex items-center gap-4">
+          <span>24/7 PET EXPERT SUPPORT ☎️</span>
+        </span>
+        <span class="text-green-400"><i class="fa-solid fa-headset"></i></span>
+
+        <span class="flex items-center gap-4">
+          <span>30-DAY HASSLE FREE RETURNS 🔄</span>
+        </span>
+        <span class="text-red-400"><i class="fa-solid fa-repeat"></i></span>
+      {%- endfor -%}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Scrolling Marquee Text",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Scrolling Marquee Text",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,163 @@
+/* assets/theme.css */
+
+/* Global custom styles and theme adjustments */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Custom styling for rounded headers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fredoka', 'Quicksand', sans-serif !important;
+}
+
+/* Premium gradient animations */
+.premium-gradient {
+  background: linear-gradient(-45deg, #ff6f61, #feb236, #4a90e2, #ff6f61);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Infinite Scrolling Marquee for scrolling text section */
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.marquee-content {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Customized product hover zoom card effect */
+.product-card-zoom img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card-zoom:hover img {
+  transform: scale(1.1);
+}
+
+/* Flip card or second image reveal on hover */
+.hover-reveal-container {
+  position: relative;
+}
+
+.hover-reveal-second {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.hover-reveal-container:hover .hover-reveal-second {
+  opacity: 1;
+}
+
+/* Floating animation for decorative pet elements */
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-animation-delay {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Sticky Header styling */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.sticky-header-scrolled {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Customized scrollbar for high-end look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Pulse pet paw footprints */
+.paw-pulse {
+  position: relative;
+}
+
+.paw-pulse::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ff6f61;
+  opacity: 0.2;
+  border-radius: 50%;
+  transform: scale(1);
+  animation: pawPulse 2s infinite;
+}
+
+@keyframes pawPulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Glassmorphism effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}

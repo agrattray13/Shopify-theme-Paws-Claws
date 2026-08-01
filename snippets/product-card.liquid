@@ -1,0 +1,79 @@
+<!-- snippets/product-card.liquid -->
+<div class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col p-4 relative" data-aos="fade-up" data-aos-delay="{{ index | multiply: 100 }}">
+  
+  <!-- Badges (Sale / Sold Out) -->
+  {%- if product.available == false -%}
+    <span class="absolute top-4 left-4 bg-slate-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-full z-10 shadow-sm uppercase tracking-wider">
+      Sold Out
+    </span>
+  {%- elsif product.compare_at_price > product.price -%}
+    <span class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full z-10 shadow-sm uppercase tracking-wider">
+      Sale 🐾
+    </span>
+  {%- endif -%}
+
+  <!-- Wishlist Link -->
+  <button class="absolute top-4 right-4 w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-300 hover:text-red-500 hover:shadow-md shadow-sm border border-gray-50 transition-all z-10" aria-label="Add to wishlist">
+    <i class="fa-regular fa-heart"></i>
+  </button>
+
+  <!-- Product Image Container with Reveal Effect on Hover -->
+  <div class="w-full aspect-square rounded-2xl overflow-hidden mb-6 flex-shrink-0 relative bg-gray-50 flex items-center justify-center">
+    {%- if product.featured_image -%}
+      <div class="w-full h-full hover-reveal-container">
+        <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        {%- if product.images[1] != blank -%}
+          <img src="{{ product.images[1] | image_url: width: 400 }}" alt="{{ product.title | escape }}" class="hover-reveal-second w-full h-full object-cover">
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-300 text-5xl">
+        <i class="fa-solid fa-image"></i>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <!-- Description & Ratings -->
+  <div class="flex-grow flex flex-col">
+    <div class="flex items-center gap-1 text-accent text-xs mb-2">
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <span class="text-customTextMuted font-bold ml-1">5.0</span>
+    </div>
+
+    <h3 class="font-heading font-black text-base text-customText leading-snug group-hover:text-primary transition-colors duration-200">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    
+    <p class="text-xs text-customTextMuted font-medium mt-1 truncate">
+      {{ product.vendor | default: "Vet Approved Quality" }}
+    </p>
+  </div>
+
+  <!-- Pricing and Form Add -->
+  <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-50">
+    <div class="flex items-center gap-2">
+      <span class="text-lg font-black text-primary">{{ product.price | money }}</span>
+      {%- if product.compare_at_price > product.price -%}
+        <span class="text-xs text-customTextMuted line-through">{{ product.compare_at_price | money }}</span>
+      {%- endif -%}
+    </div>
+
+    {%- if product.available -%}
+      <form action="/cart/add" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+        <button type="submit" class="ajax-add-to-cart-btn bg-primary/10 hover:bg-primary hover:text-white text-primary rounded-full w-10 h-10 flex items-center justify-center transition-all shadow-inner hover:shadow-md" aria-label="Add {{ product.title }} to Cart">
+          <i class="fa-solid fa-plus text-sm"></i>
+        </button>
+      </form>
+    {%- else -%}
+      <button disabled class="bg-gray-100 text-gray-400 rounded-full w-10 h-10 flex items-center justify-center cursor-not-allowed text-xs" aria-label="Sold Out">
+        <i class="fa-solid fa-ban"></i>
+      </button>
+    {%- endif -%}
+  </div>
+
+</div>

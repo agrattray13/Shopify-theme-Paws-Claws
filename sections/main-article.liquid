@@ -1,0 +1,235 @@
+<!-- sections/main-article.liquid -->
+<article class="py-16 sm:py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-6">
+    
+    {%- if article != blank -%}
+      <!-- Real Article Page -->
+      <div class="space-y-8" data-aos="fade-up">
+        
+        <!-- Details & Tags -->
+        <div class="space-y-4 text-center">
+          <div class="flex items-center justify-center gap-2 text-xs font-bold text-primary uppercase tracking-widest">
+            <span class="bg-primary/10 py-1.5 px-4 rounded-full">
+              {{ article.tags[0] | default: "Pet Care Tips" }}
+            </span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-black font-heading text-customText leading-tight max-w-3xl mx-auto">
+            {{ article.title }}
+          </h1>
+          <div class="flex items-center justify-center gap-4 text-xs font-semibold text-customTextMuted pt-2">
+            <span>By <span class="text-customText font-bold">{{ article.author }}</span></span>
+            <span>•</span>
+            <span><i class="fa-regular fa-calendar-days mr-1 text-primary"></i> {{ article.published_at | date: "%b %d, %Y" }}</span>
+          </div>
+        </div>
+
+        <!-- Featured Image -->
+        {%- if article.image -%}
+          <div class="aspect-[16/9] rounded-[3rem] overflow-hidden border border-gray-100 shadow-2xl">
+            <img src="{{ article.image | image_url: width: 1000 }}" alt="{{ article.title }}" class="w-full h-full object-cover">
+          </div>
+        {%- endif -%}
+
+        <!-- Rich Text Content -->
+        <div class="prose prose-orange max-w-none text-base sm:text-lg text-customTextMuted leading-relaxed font-medium space-y-6 pt-6">
+          {{ article.content }}
+        </div>
+
+        <!-- Share Links -->
+        <div class="border-y border-gray-100 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm font-bold text-customTextMuted">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-tags text-primary"></i> Tags: 
+            <span class="text-customText">
+              {% for tag in article.tags %}
+                {{ tag }}{% unless forloop.last %}, {% endunless %}
+              {% endfor %}
+            </span>
+          </div>
+          <div class="flex items-center gap-4 text-customText text-base">
+            <span>Share Article:</span>
+            <a href="https://facebook.com" class="hover:text-primary transition-colors"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com" class="hover:text-primary transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://pinterest.com" class="hover:text-primary transition-colors"><i class="fa-brands fa-pinterest"></i></a>
+          </div>
+        </div>
+
+        <!-- Comments Section -->
+        {%- if blog.comments_enabled? -%}
+          <div class="space-y-12 pt-12">
+            <h3 class="text-2xl font-black font-heading text-customText">
+              {{ 'general.blog.comments_count' | t: count: article.comments_count }}
+            </h3>
+
+            <!-- Comments List -->
+            {%- if article.comments_count > 0 -%}
+              <div class="space-y-6">
+                {%- for comment in article.comments -%}
+                  <div class="bg-customBgSec border border-gray-150 p-6 rounded-3xl space-y-3">
+                    <div class="flex items-center justify-between text-xs font-semibold text-customTextMuted">
+                      <span class="text-customText font-bold">{{ comment.author }}</span>
+                      <span>{{ comment.created_at | date: "%B %d, %Y" }}</span>
+                    </div>
+                    <div class="text-sm sm:text-base text-customTextMuted leading-relaxed font-medium">
+                      {{ comment.content }}
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- else -%}
+              <p class="text-sm sm:text-base text-customTextMuted italic">{{ 'general.blog.no_comments' | t }}</p>
+            {%- endif -%}
+
+            <!-- Comment Form -->
+            <div class="bg-customBgSec rounded-[2.5rem] p-8 sm:p-12 border border-gray-100 space-y-6">
+              <h4 class="text-xl font-black font-heading text-customText">Leave a Comment</h4>
+              {%- form 'new_comment', article -%}
+                {%- if form.posted_successfully? -%}
+                  <div class="bg-green-100 border border-green-400 text-green-700 p-4 rounded-2xl text-sm font-semibold">
+                    🐾 Comment submitted successfully! It will appear after moderation.
+                  </div>
+                {%- else -%}
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                      <label class="block text-xs font-bold text-customText uppercase tracking-wider">Name</label>
+                      <input type="text" name="comment[author]" required class="w-full bg-white border border-gray-200 rounded-full px-5 py-3.5 focus:outline-none focus:border-primary transition-all text-sm font-semibold text-customText" placeholder="Your name...">
+                    </div>
+                    <div class="space-y-2">
+                      <label class="block text-xs font-bold text-customText uppercase tracking-wider">Email</label>
+                      <input type="email" name="comment[email]" required class="w-full bg-white border border-gray-200 rounded-full px-5 py-3.5 focus:outline-none focus:border-primary transition-all text-sm font-semibold text-customText" placeholder="Your email...">
+                    </div>
+                  </div>
+                  <div class="space-y-2 mt-6">
+                    <label class="block text-xs font-bold text-customText uppercase tracking-wider">Comment Body</label>
+                    <textarea name="comment[body]" rows="5" required class="w-full bg-white border border-gray-200 rounded-3xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm font-semibold text-customText" placeholder="Your comment here..."></textarea>
+                  </div>
+                  <div class="pt-4">
+                    <button type="submit" class="bg-primary hover:bg-opacity-90 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                      <i class="fa-solid fa-paper-plane"></i> Submit Comment
+                    </button>
+                  </div>
+                {%- endif -%}
+              {%- endform -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+      </div>
+    {%- else -%}
+      <!-- Fallback Premium Mock Article Page (for previews / empty setups) -->
+      <div class="space-y-8" data-aos="fade-up">
+        
+        <!-- Details & Tags -->
+        <div class="space-y-4 text-center">
+          <div class="flex items-center justify-center gap-2 text-xs font-bold text-primary uppercase tracking-widest">
+            <span class="bg-primary/10 py-1.5 px-4 rounded-full">
+              Dog Health Tips 🐶
+            </span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-black font-heading text-customText leading-tight max-w-3xl mx-auto">
+            5 Expert Tips to Combat Your Dog's Seasonal Allergies
+          </h1>
+          <div class="flex items-center justify-center gap-4 text-xs font-semibold text-customTextMuted pt-2">
+            <span>By <span class="text-customText font-bold">Dr. Evelyn Ross, DVM</span></span>
+            <span>•</span>
+            <span><i class="fa-regular fa-calendar-days mr-1 text-primary"></i> August 01, 2026</span>
+          </div>
+        </div>
+
+        <!-- Fallback Image Graphic -->
+        <div class="aspect-[16/9] rounded-[3.5rem] bg-orange-100 flex flex-col items-center justify-center border-4 border-white shadow-2xl relative overflow-hidden">
+          <!-- Background ripple -->
+          <div class="absolute w-[80%] h-[80%] bg-white/20 rounded-full filter blur-xl animate-pulse"></div>
+          <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center text-primary text-5xl shadow-lg relative z-10 float-animation">
+            <i class="fa-solid fa-bone"></i>
+          </div>
+          <p class="font-heading font-black text-xl text-customText mt-4 relative z-10">Premium Dog Care Insights</p>
+        </div>
+
+        <!-- Rich Text Content Body -->
+        <div class="max-w-none text-base sm:text-lg text-customTextMuted leading-relaxed font-medium space-y-6 pt-6">
+          <p>Does your dog spend all day scratching behind their ears, licking their paws, or rubbing their face against the rug? As the seasons change from summer to fall, pollen levels escalate, and mold spores thrive in damp leaf piles. Our beloved canine companions absorb allergens not just by breathing them in, but also directly through their paw pads.</p>
+          <h2 class="font-heading font-black text-2xl text-customText pt-4">1. Wipe Down Paw Pads After Every Walk</h2>
+          <p>This is the simplest yet most effective way to provide immediate relief. When your dog walks through grass, millions of microscopic allergen particles stick to their fur. Using a damp, organic chamomile wipe, gently clean all four paws, paying special attention to the tender skin between their webbed toes.</p>
+          <h2 class="font-heading font-black text-2xl text-customText pt-4">2. Introduce Omega-3 Fish Oil Supplements</h2>
+          <p>Omega-3 fatty acids act as a natural anti-inflammatory for your pet's epidermal system. Adding high-quality wild-caught salmon or krill oil to their morning bowls helps lock in dermal moisture, strengthening their skin barrier from the inside out.</p>
+        </div>
+
+        <!-- Share Links -->
+        <div class="border-y border-gray-100 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm font-bold text-customTextMuted">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-tags text-primary"></i> Tags: <span class="text-customText">Dog Care, Allergies, Healthy Coat</span>
+          </div>
+          <div class="flex items-center gap-4 text-customText text-base">
+            <span>Share Article:</span>
+            <a href="https://facebook.com" class="hover:text-primary transition-colors"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com" class="hover:text-primary transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://pinterest.com" class="hover:text-primary transition-colors"><i class="fa-brands fa-pinterest"></i></a>
+          </div>
+        </div>
+
+        <!-- Mock Comments Section -->
+        <div class="space-y-12 pt-12">
+          <h3 class="text-2xl font-black font-heading text-customText">
+            2 Comments
+          </h3>
+
+          <div class="space-y-6">
+            <div class="bg-customBgSec border border-gray-150 p-6 rounded-3xl space-y-3">
+              <div class="flex items-center justify-between text-xs font-semibold text-customTextMuted">
+                <span class="text-customText font-bold">Liam Peterson</span>
+                <span>August 01, 2026</span>
+              </div>
+              <div class="text-sm sm:text-base text-customTextMuted leading-relaxed font-medium">
+                "Our lab was itching like crazy this week! Wiped his paws down after a walk today and he seems so much more relaxed already. Thank you for these practical tips Dr. Ross!"
+              </div>
+            </div>
+            <div class="bg-customBgSec border border-gray-150 p-6 rounded-3xl space-y-3">
+              <div class="flex items-center justify-between text-xs font-semibold text-customTextMuted">
+                <span class="text-customText font-bold">Jessica Vance</span>
+                <span>August 01, 2026</span>
+              </div>
+              <div class="text-sm sm:text-base text-customTextMuted leading-relaxed font-medium">
+                "Any specific recommendations for salmon oils? My cocker spaniel is extremely picky about flavors."
+              </div>
+            </div>
+          </div>
+
+          <!-- Comment Form -->
+          <div class="bg-customBgSec rounded-[2.5rem] p-8 sm:p-12 border border-gray-100 space-y-6">
+            <h4 class="text-xl font-black font-heading text-customText">Leave a Comment</h4>
+            <form action="/blogs/news" method="post" class="space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label class="block text-xs font-bold text-customText uppercase tracking-wider">Name</label>
+                  <input type="text" required class="w-full bg-white border border-gray-200 rounded-full px-5 py-3.5 focus:outline-none focus:border-primary transition-all text-sm font-semibold text-customText" placeholder="Your name...">
+                </div>
+                <div class="space-y-2">
+                  <label class="block text-xs font-bold text-customText uppercase tracking-wider">Email</label>
+                  <input type="email" required class="w-full bg-white border border-gray-200 rounded-full px-5 py-3.5 focus:outline-none focus:border-primary transition-all text-sm font-semibold text-customText" placeholder="Your email...">
+                </div>
+              </div>
+              <div class="space-y-2 mt-6">
+                <label class="block text-xs font-bold text-customText uppercase tracking-wider">Comment Body</label>
+                <textarea rows="5" required class="w-full bg-white border border-gray-200 rounded-3xl px-5 py-4 focus:outline-none focus:border-primary transition-all text-sm font-semibold text-customText" placeholder="Your comment here..."></textarea>
+              </div>
+              <div class="pt-4">
+                <button type="submit" class="bg-primary hover:bg-opacity-90 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-paper-plane"></i> Submit Comment
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    {%- endif -%}
+
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Article Details",
+  "settings": []
+}
+{% endschema %}

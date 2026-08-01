@@ -1,0 +1,146 @@
+<!-- sections/image-with-text.liquid -->
+<section class="py-20 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    
+    <!-- Image Content with premium overlay -->
+    <div class="relative" data-aos="fade-right">
+      
+      <!-- Back blob -->
+      <div class="absolute w-[90%] h-[90%] -top-6 -left-6 bg-secondary/10 rounded-[3.5rem] -z-10 transform -rotate-3"></div>
+
+      <!-- Main Image Frame -->
+      <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 aspect-[4/3]">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="Healthy Pets Organic Nutrition" class="w-full h-full object-cover">
+        {% else %}
+          <!-- Mock illustration graphic -->
+          <div class="w-full h-full bg-blue-50 flex flex-col items-center justify-center p-8 space-y-4">
+            <div class="w-28 h-28 bg-white rounded-full flex items-center justify-center text-secondary text-5xl shadow-md float-animation">
+              <i class="fa-solid fa-cookie-bite"></i>
+            </div>
+            <div class="text-center space-y-1">
+              <p class="font-heading font-black text-xl text-customText">Nutritious Recipe Base</p>
+              <p class="text-xs text-customTextMuted font-bold">100% Organically Sourced Proteans</p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Floating Badge -->
+      <div class="absolute -bottom-6 -right-6 bg-white border border-gray-100 p-5 rounded-3xl shadow-2xl flex items-center gap-3 float-animation-delay max-w-[260px]">
+        <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center text-primary text-2xl flex-shrink-0">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <p class="text-xs font-black text-customText">100% Vet Approved</p>
+          <p class="text-[10px] text-customTextMuted">No artificial preservatives, colors, or fillers.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Text Content -->
+    <div class="space-y-8" data-aos="fade-left" data-aos-delay="200">
+      <div class="inline-flex items-center gap-1.5 text-secondary text-sm font-bold uppercase tracking-wider">
+        <i class="fa-solid fa-seedling"></i> {{ section.settings.label }}
+      </div>
+      
+      <h2 class="text-3xl sm:text-4xl font-black font-heading text-customText leading-tight">
+        {{ section.settings.title }}
+      </h2>
+
+      <p class="text-base text-customTextMuted leading-relaxed font-medium">
+        {{ section.settings.text }}
+      </p>
+
+      <!-- Key Benefits List -->
+      <ul class="space-y-4">
+        <li class="flex items-start gap-4">
+          <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 text-xs mt-1 flex-shrink-0">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-customText">All-Natural Organic Ingredients</h4>
+            <p class="text-xs text-customTextMuted font-medium">Only the best real meats and superfoods for vitality.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 text-xs mt-1 flex-shrink-0">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-customText">Hypoallergenic &amp; Digestible</h4>
+            <p class="text-xs text-customTextMuted font-medium">Specially designed recipes tailored for sensitive pet tummies.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 text-xs mt-1 flex-shrink-0">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-customText">Sustainably and Lovingly Sourced</h4>
+            <p class="text-xs text-customTextMuted font-medium">Eco-friendly supply chains that protect our earth and wildlife.</p>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Primary Action CTA -->
+      <div class="pt-4">
+        <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="bg-secondary hover:bg-opacity-90 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all inline-flex items-center gap-2 group">
+          <span>{{ section.settings.button_text }}</span>
+          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Small Label",
+      "default": "Pure Nutrition Science"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "We Only Put the Best in Our Premium Pet Bowls"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Every formulation at Claws & Paws begins with fresh ingredients. We partner directly with organic family farms to source grass-fed meats, ocean-caught fish, and robust superfoods. Your pet will enjoy enhanced muscle tone, sparkling coat shine, and prolonged energy."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Discover Our Recipes"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,205 @@
+<!-- sections/main-blog.liquid -->
+{%- paginate blog.articles by 6 -%}
+<section class="bg-customBgSec py-12 border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 text-center space-y-4">
+    <h1 class="text-3xl sm:text-5xl font-black font-heading text-customText">
+      {%- if blog != blank -%}{{ blog.title }}{%- else -%}The Claws &amp; Paws Blog 🐾{%- endif -%}
+    </h1>
+    <p class="text-sm sm:text-base text-customTextMuted font-medium max-w-xl mx-auto">
+      Your ultimate destination for professional pet food formulas, vet-approved grooming guides, and behavioral tips.
+    </p>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+      
+      <!-- Left List Grid of Articles -->
+      <div class="lg:col-span-2 space-y-12">
+        {%- if blog != blank and blog.articles_count > 0 -%}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {%- for article in blog.articles -%}
+              <article class="group bg-customBgSec rounded-[2.5rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full relative" data-aos="fade-up">
+                {%- if article.image -%}
+                  <div class="aspect-[16/10] overflow-hidden bg-gray-100 relative">
+                    <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.title | escape }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <span class="absolute bottom-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm uppercase tracking-wider">
+                      {{ article.tags[0] | default: "Pet Care" }}
+                    </span>
+                  </div>
+                {%- endif -%}
+
+                <div class="p-8 flex-grow flex flex-col justify-between space-y-4">
+                  <div class="space-y-2">
+                    <span class="text-xs text-customTextMuted font-bold uppercase tracking-wider block">
+                      <i class="fa-regular fa-calendar-days mr-1.5 text-primary"></i> {{ article.published_at | date: "%b %d, %Y" }}
+                    </span>
+                    <h3 class="font-heading font-black text-xl text-customText leading-snug group-hover:text-primary transition-colors duration-200">
+                      <a href="{{ article.url }}">{{ article.title }}</a>
+                    </h3>
+                    <p class="text-sm text-customTextMuted leading-relaxed font-medium line-clamp-3">
+                      {{ article.excerpt_or_content | strip_html | truncatewords: 22 }}
+                    </p>
+                  </div>
+
+                  <div class="pt-4 border-t border-gray-200/50 flex items-center justify-between">
+                    <span class="text-xs text-customText font-bold group-hover:text-primary transition-colors flex items-center gap-1.5">
+                      Read Article <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                    <span class="text-xs text-customTextMuted font-semibold">By {{ article.author }}</span>
+                  </div>
+                </div>
+                <a href="{{ article.url }}" class="absolute inset-0" aria-label="Read {{ article.title | escape }}"></a>
+              </article>
+            {%- endfor -%}
+          </div>
+
+          <!-- Pagination -->
+          {%- if paginate.pages > 1 -%}
+            <div class="pt-12 border-t border-gray-100 flex justify-center gap-3 text-sm font-bold">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}" class="w-10 h-10 rounded-full bg-customBgSec border border-gray-100 flex items-center justify-center text-customText hover:bg-primary hover:text-white transition-all"><i class="fa-solid fa-chevron-left"></i></a>
+              {%- endif -%}
+
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}" class="w-10 h-10 rounded-full bg-customBgSec border border-gray-100 flex items-center justify-center text-customText hover:bg-primary hover:text-white transition-all">{{ part.title }}</a>
+                {%- else -%}
+                  <span class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">{{ part.title }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}" class="w-10 h-10 rounded-full bg-customBgSec border border-gray-100 flex items-center justify-center text-customText hover:bg-primary hover:text-white transition-all"><i class="fa-solid fa-chevron-right"></i></a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+        {%- else -%}
+          <!-- Mock Fallback Articles Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {%- for i in (1..4) -%}
+              {%- liquid
+                case i
+                  when 1
+                    assign title = "5 Expert Tips to Combat Your Dog's Seasonal Allergies"
+                    assign author = "Dr. Evelyn Ross"
+                    assign summary = "Is your puppy scratching constantly? Seasonal pollen and molds might be the culprit. Discover vet-approved home remedies, supplements, and care tips."
+                    assign tag = "Dog Health"
+                    assign color_cls = "bg-orange-100 text-primary"
+                    assign icon = "fa-bone"
+                  when 2
+                    assign title = "Understanding Cat Communication: What is Your Feline Saying?"
+                    assign author = "Amelia Vance"
+                    assign summary = "From rapid slow blinks to slow tail twitches and friendly headbutts, cats have a complex visual and physical vocabulary. Learn to decode their signals."
+                    assign tag = "Cat Training"
+                    assign color_cls = "bg-blue-100 text-secondary"
+                    assign icon = "fa-cat"
+                  when 3
+                    assign title = "The Ultimate Guide to Choosing Organic Raw Pet Ingredients"
+                    assign author = "Chef Marcus Bell"
+                    assign summary = "Raw feeding has skyrocketed in popularity among pet experts. We demystify nutritional profiles, handling rules, and simple home meal prep formulas."
+                    assign tag = "Nutrition"
+                    assign color_cls = "bg-amber-100 text-accent"
+                    assign icon = "fa-cookie-bite"
+                  when 4
+                    assign title = "Cozy and Calm: Simple Tricks to Beat Pet Separation Anxiety"
+                    assign author = "Jessica Cole"
+                    assign summary = "Going back to work can be stressful for your beloved dog or cat. Discover simple crate adjustments, white noise aids, and herbal calming remedies."
+                    assign tag = "Behavior"
+                    assign color_cls = "bg-emerald-100 text-emerald-500"
+                    assign icon = "fa-shield-heart"
+                endcase
+              -%}
+
+              <article class="group bg-customBgSec rounded-[2.5rem] overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full relative" data-aos="fade-up">
+                <div class="aspect-[16/10] overflow-hidden relative {{ color_cls }} flex items-center justify-center">
+                  <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-3xl float-animation">
+                    <i class="fa-solid {{ icon }}"></i>
+                  </div>
+                  <span class="absolute bottom-4 left-4 bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm uppercase tracking-wider">
+                    {{ tag }}
+                  </span>
+                </div>
+
+                <div class="p-8 flex-grow flex flex-col justify-between space-y-4">
+                  <div class="space-y-2">
+                    <span class="text-xs text-customTextMuted font-bold uppercase tracking-wider block flex items-center justify-between">
+                      <span><i class="fa-regular fa-calendar-days mr-1.5 text-primary"></i> Aug 01, 2026</span>
+                      <span>5 min read</span>
+                    </span>
+                    <h3 class="font-heading font-black text-xl text-customText leading-snug group-hover:text-primary transition-colors duration-200">
+                      {{ title }}
+                    </h3>
+                    <p class="text-sm text-customTextMuted leading-relaxed font-medium line-clamp-3">
+                      {{ summary }}
+                    </p>
+                  </div>
+
+                  <div class="pt-4 border-t border-gray-200/50 flex items-center justify-between">
+                    <span class="text-xs text-customText font-bold group-hover:text-primary transition-colors flex items-center gap-1.5">
+                      Read Article <i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                    <span class="text-xs text-customTextMuted font-semibold">By {{ author }}</span>
+                  </div>
+                </div>
+                <!-- Link to specific mock layout -->
+                <a href="/blogs/news/post-{{ i }}" class="absolute inset-0" aria-label="Read {{ title }}"></a>
+              </article>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Right Sidebar Column -->
+      <aside class="space-y-8" data-aos="fade-left" data-aos-delay="200">
+        <!-- Search Widget -->
+        <div class="bg-customBgSec border border-gray-100 rounded-3xl p-6 shadow-sm">
+          <h4 class="font-heading font-black text-base text-customText mb-4">Search Articles</h4>
+          <form action="/search" method="get" class="flex items-center relative bg-white border border-gray-100 rounded-full px-4 py-2">
+            <input type="hidden" name="type" value="article">
+            <input type="text" name="q" placeholder="Type keywords..." class="bg-transparent text-sm text-customText focus:outline-none w-full pr-8">
+            <button type="submit" class="absolute right-4 text-customTextMuted hover:text-primary transition-colors">
+              <i class="fa-solid fa-magnifying-glass text-xs"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- Tag Categories Widget -->
+        <div class="bg-customBgSec border border-gray-100 rounded-3xl p-6 shadow-sm">
+          <h4 class="font-heading font-black text-base text-customText mb-4 border-b border-gray-200 pb-2 flex justify-between">
+            <span>Popular Tags</span>
+            <i class="fa-solid fa-tags text-xs text-primary"></i>
+          </h4>
+          <div class="flex flex-wrap gap-2 text-xs font-bold text-customTextMuted">
+            <span class="bg-white hover:bg-primary hover:text-white py-2 px-3.5 rounded-full border border-gray-150 shadow-sm transition-all cursor-pointer">#DogCare</span>
+            <span class="bg-white hover:bg-primary hover:text-white py-2 px-3.5 rounded-full border border-gray-150 shadow-sm transition-all cursor-pointer">#CatNutrition</span>
+            <span class="bg-white hover:bg-primary hover:text-white py-2 px-3.5 rounded-full border border-gray-150 shadow-sm transition-all cursor-pointer">#TrainingTips</span>
+            <span class="bg-white hover:bg-primary hover:text-white py-2 px-3.5 rounded-full border border-gray-150 shadow-sm transition-all cursor-pointer">#PuppyLife</span>
+            <span class="bg-white hover:bg-primary hover:text-white py-2 px-3.5 rounded-full border border-gray-150 shadow-sm transition-all cursor-pointer">#VetAdvice</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Author Profile Pitch -->
+        <div class="bg-gradient-to-tr from-slate-900 to-slate-950 text-white rounded-3xl p-6 shadow-xl relative overflow-hidden">
+          <div class="absolute top-4 right-4 text-white/5 text-7xl"><i class="fa-solid fa-quote-right"></i></div>
+          <p class="text-xs text-primary font-bold tracking-widest uppercase">Expert Editor Board</p>
+          <p class="text-sm text-gray-300 italic mt-3 font-medium leading-relaxed">
+            "We believe that a healthy pet begins with a knowledgeable pet parent. Every article we publish undergoes strict editorial vetting."
+          </p>
+          <p class="text-xs font-heading font-black mt-4 text-white">— Dr. Evelyn Ross, DVM</p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Blog Listings",
+  "settings": []
+}
+{% endschema %}

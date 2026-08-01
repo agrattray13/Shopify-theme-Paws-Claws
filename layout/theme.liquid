@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  <!-- Meta tags for social media share -->
+  {% render 'meta-tags' %}
+
+  <!-- Google Fonts for Claws & Paws: Fredoka (Friendly Pet Headings) + Quicksand (Clean, modern Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons for pets, stars, carts, etc. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- AOS (Animate on Scroll) for premium scrolling animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaYi6gGfcIv9853g6w95qYGfgM97qgyd9+1Q5ycqiUX61WtwFG6jTKc9O336YeN6HQM9W8Q5t7gUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Tailwind CSS CDN v3 (with custom brand configuration) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Fredoka', 'sans-serif'],
+            body: ['Quicksand', 'sans-serif'],
+          },
+          colors: {
+            primary: '{{ settings.color_primary | default: "#ff6f61" }}',
+            secondary: '{{ settings.color_secondary | default: "#4a90e2" }}',
+            accent: '{{ settings.color_accent | default: "#feb236" }}',
+            customBg: '{{ settings.color_bg | default: "#ffffff" }}',
+            customBgSec: '{{ settings.color_bg_secondary | default: "#f9f9fb" }}',
+            customText: '{{ settings.color_text | default: "#2d3748" }}',
+            customTextMuted: '{{ settings.color_text_muted | default: "#718096" }}',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Theme Styles -->
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  <!-- Required Shopify header tags -->
+  {{ content_for_header }}
+</head>
+
+<body class="font-body bg-customBg text-customText antialiased flex flex-col min-h-screen selection:bg-primary selection:text-white">
+  
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+
+  <main id="MainContent" class="flex-grow focus:outline-none" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  <!-- Drawer/Modal for Cart Quickview / Mobile Navigation / Newsletter success popup (built natively) -->
+  {% render 'cart-drawer' %}
+
+  <!-- AOS JS (Animate on Scroll) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2QrAZjy95fvoqoM/oc6NH3GDDoc35LRsFgUJvBackImOB/To9R/WqY8r37psxKryV6gRL96Kug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <!-- Main Theme JavaScript -->
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize AOS Scroll Animations
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 50,
+      });
+    });
+  </script>
+</body>
+</html>

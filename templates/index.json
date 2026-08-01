@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner",
+      "settings": {
+        "sub_heading": "Premium Pets Deserve Premium Goods",
+        "heading_part1": "Unleash Ultimate Joy for",
+        "heading_highlight": "Your Furry Friends",
+        "heading_part2": "Every Single Day.",
+        "description": "Welcome to Claws and Paws Pet Supplies a Premium Theme! Discover curated vet-approved health foods, ultra-durable fetch toys, cozy organic orthopedic bedding, and designer collars crafted for premium paws.",
+        "btn1_text": "Shop Best Sellers",
+        "btn2_text": "Our Pure Story"
+      }
+    },
+    "scrolling_marquee": {
+      "type": "scrolling-text",
+      "settings": {}
+    },
+    "featured_collections": {
+      "type": "featured-collections",
+      "settings": {}
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {}
+    },
+    "image_with_text": {
+      "type": "image-with-text",
+      "settings": {
+        "label": "Pure Nutrition Science",
+        "title": "We Only Put the Best in Our Premium Pet Bowls",
+        "text": "Every formulation at Claws & Paws begins with fresh ingredients. We partner directly with organic family farms to source grass-fed meats, ocean-caught fish, and robust superfoods. Your pet will enjoy enhanced muscle tone, sparkling coat shine, and prolonged energy.",
+        "button_text": "Discover Our Recipes"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {}
+    },
+    "blog_posts": {
+      "type": "blog-posts",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero_banner",
+    "scrolling_marquee",
+    "featured_collections",
+    "featured_products",
+    "image_with_text",
+    "testimonials",
+    "blog_posts"
+  ]
+}

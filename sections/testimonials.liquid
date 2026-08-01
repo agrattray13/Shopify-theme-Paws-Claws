@@ -1,0 +1,121 @@
+<!-- sections/testimonials.liquid -->
+<section class="py-20 bg-customBgSec border-t border-gray-100 relative overflow-hidden">
+  
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+    
+    <!-- Section Title -->
+    <div class="space-y-4 mb-12">
+      <div class="flex items-center justify-center gap-1.5 text-accent text-sm font-bold uppercase tracking-wider" data-aos="fade-up">
+        <i class="fa-solid fa-star"></i> Real Reviews
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-black font-heading text-customText" data-aos="fade-up" data-aos-delay="100">
+        Loved by <span class="text-primary">Happy Pet Parents</span>
+      </h2>
+    </div>
+
+    <!-- Slides Frame -->
+    <div class="relative bg-white rounded-[3rem] p-8 sm:p-14 shadow-xl border border-gray-50 max-w-3xl mx-auto min-h-[320px] flex flex-col justify-center" data-aos="zoom-in" data-aos-delay="200">
+      
+      <!-- Big Decorative Quote Icon -->
+      <div class="absolute -top-6 left-10 text-primary/10 text-7xl select-none pointer-events-none">
+        <i class="fa-solid fa-quote-left"></i>
+      </div>
+
+      <!-- Slide 1: Dog Owner -->
+      <div class="testimonial-slide transition-opacity duration-500 ease-in-out">
+        <div class="flex items-center justify-center gap-1 text-accent mb-6">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <blockquote class="text-lg sm:text-xl text-customText font-medium leading-relaxed italic mb-8">
+          "Our Golden Retriever, Buddy, used to struggle with dry itchy skin. Since switching to the organic salmon food from Claws &amp; Paws, his coat is incredibly shiny, and he licks his bowl completely clean every single morning!"
+        </blockquote>
+        <div class="flex items-center justify-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-primary font-bold text-lg border-2 border-white shadow-md">
+            <i class="fa-solid fa-dog"></i>
+          </div>
+          <div class="text-left">
+            <cite class="not-italic font-black text-customText block text-sm">Sarah Jenkins &amp; Buddy</cite>
+            <span class="text-[10px] text-customTextMuted font-bold uppercase tracking-wider">Verified Dog Parent</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Cat Owner -->
+      <div class="testimonial-slide transition-opacity duration-500 ease-in-out hidden opacity-0">
+        <div class="flex items-center justify-center gap-1 text-accent mb-6">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <blockquote class="text-lg sm:text-xl text-customText font-medium leading-relaxed italic mb-8">
+          "Finding toys that keep my indoor cat, Bella, active is always a challenge. The double-decker feather wand from this store has kept her busy for hours! She's obsessed, and it's extremely durable too!"
+        </blockquote>
+        <div class="flex items-center justify-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-secondary font-bold text-lg border-2 border-white shadow-md">
+            <i class="fa-solid fa-cat"></i>
+          </div>
+          <div class="text-left">
+            <cite class="not-italic font-black text-customText block text-sm">Marcus Vance &amp; Bella</cite>
+            <span class="text-[10px] text-customTextMuted font-bold uppercase tracking-wider">Verified Cat Parent</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Vet review -->
+      <div class="testimonial-slide transition-opacity duration-500 ease-in-out hidden opacity-0">
+        <div class="flex items-center justify-center gap-1 text-accent mb-6">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <blockquote class="text-lg sm:text-xl text-customText font-medium leading-relaxed italic mb-8">
+          "As a practicing veterinarian, I am very picky about what I recommend to clients. Claws &amp; Paws uses truly premium ingredients and meets strict nutritional requirements. I feed it to my own pets!"
+        </blockquote>
+        <div class="flex items-center justify-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-lg border-2 border-white shadow-md">
+            <i class="fa-solid fa-user-doctor"></i>
+          </div>
+          <div class="text-left">
+            <cite class="not-italic font-black text-customText block text-sm">Dr. Evelyn Ross, DVM</cite>
+            <span class="text-[10px] text-customTextMuted font-bold uppercase tracking-wider">Professional Veterinarian</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slider Controls (Next/Prev Buttons) -->
+      <div class="absolute inset-y-0 -left-4 sm:-left-6 flex items-center">
+        <button id="PrevReviewBtn" class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100 text-customText hover:text-primary transition-all hover:scale-105" aria-label="Previous testimonial">
+          <i class="fa-solid fa-chevron-left text-sm"></i>
+        </button>
+      </div>
+      <div class="absolute inset-y-0 -right-4 sm:-right-6 flex items-center">
+        <button id="NextReviewBtn" class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-gray-100 text-customText hover:text-primary transition-all hover:scale-105" aria-label="Next testimonial">
+          <i class="fa-solid fa-chevron-right text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials Slider",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Testimonials Slider",
+      "category": "Sliders"
+    }
+  ]
+}
+{% endschema %}

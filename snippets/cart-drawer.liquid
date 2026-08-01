@@ -1,0 +1,93 @@
+<!-- snippets/cart-drawer.liquid -->
+<div id="CartDrawer" class="fixed inset-y-0 right-0 w-full sm:max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-l border-gray-100 hidden">
+  <!-- Header -->
+  <div class="p-6 border-b border-gray-100 flex items-center justify-between bg-customBgSec">
+    <h3 class="text-xl font-bold font-heading text-customText flex items-center gap-2">
+      <i class="fa-solid fa-paw text-primary"></i> {{ 'general.cart.title' | t }}
+    </h3>
+    <button id="CloseCartDrawer" class="text-customTextMuted hover:text-primary transition-colors text-lg p-2 rounded-full hover:bg-gray-100">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <!-- Cart Items (Scrollable) -->
+  <div class="flex-grow overflow-y-auto p-6 space-y-4" id="CartDrawerItems">
+    {% if cart.item_count == 0 %}
+      <div class="flex flex-col items-center justify-center h-full text-center space-y-4 py-12">
+        <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center text-primary text-3xl">
+          <i class="fa-solid fa-shopping-basket"></i>
+        </div>
+        <p class="text-customTextMuted text-lg font-medium">{{ 'general.cart.empty' | t }}</p>
+        <button id="CartDrawerContinue" class="bg-primary hover:bg-opacity-90 text-white font-semibold py-3 px-6 rounded-full shadow-md hover:shadow-lg transition-all">
+          {{ 'general.cart.continue_shopping' | t }}
+        </button>
+      </div>
+    {% else %}
+      <form action="{{ routes.cart_url }}" method="post" id="CartDrawerForm" class="space-y-4">
+        {% for item in cart.items %}
+          <div class="flex items-center gap-4 p-3 rounded-2xl bg-customBgSec hover:shadow-sm transition-all border border-gray-50">
+            <!-- Image -->
+            <div class="w-16 h-16 rounded-xl overflow-hidden bg-white flex-shrink-0 border border-gray-100">
+              {% if item.image %}
+                <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title | escape }}" class="w-full h-full object-cover">
+              {% else %}
+                <div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-300">
+                  <i class="fa-solid fa-image"></i>
+                </div>
+              {% endif %}
+            </div>
+
+            <!-- Details -->
+            <div class="flex-grow min-w-0">
+              <h4 class="font-bold text-sm text-customText truncate hover:text-primary transition-colors">
+                <a href="{{ item.url }}">{{ item.product.title }}</a>
+              </h4>
+              {% unless item.product.has_only_default_variant %}
+                <p class="text-xs text-customTextMuted truncate">{{ item.variant.title }}</p>
+              {% endunless %}
+              <div class="flex items-center justify-between mt-2">
+                <!-- Quantity selector -->
+                <div class="flex items-center border border-gray-200 rounded-full bg-white px-2 py-0.5">
+                  <button type="button" class="cart-drawer-qty-btn text-xs text-customTextMuted hover:text-primary px-1" data-id="{{ item.key }}" data-qty="{{ item.quantity | minus: 1 }}">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <span class="text-sm font-semibold px-2 w-6 text-center text-customText">{{ item.quantity }}</span>
+                  <button type="button" class="cart-drawer-qty-btn text-xs text-customTextMuted hover:text-primary px-1" data-id="{{ item.key }}" data-qty="{{ item.quantity | plus: 1 }}">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+                <!-- Price -->
+                <span class="text-sm font-bold text-primary">{{ item.final_line_price | money }}</span>
+              </div>
+            </div>
+
+            <!-- Remove Button -->
+            <button type="button" class="cart-drawer-remove text-gray-300 hover:text-red-500 transition-colors self-start p-1" data-id="{{ item.key }}">
+              <i class="fa-solid fa-trash-can text-sm"></i>
+            </button>
+          </div>
+        {% endfor %}
+      </form>
+    {% endif %}
+  </div>
+
+  <!-- Footer (Subtotal & Actions) -->
+  {% if cart.item_count > 0 %}
+    <div class="p-6 border-t border-gray-100 bg-customBgSec space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-customTextMuted">{{ 'general.cart.subtotal' | t }}</span>
+        <span class="text-xl font-black text-customText">{{ cart.total_price | money }}</span>
+      </div>
+      <p class="text-xs text-customTextMuted">Shipping, taxes, and discounts calculated at checkout.</p>
+      
+      <div class="grid grid-cols-1 gap-2">
+        <button type="submit" form="CartDrawerForm" name="checkout" class="w-full bg-primary hover:bg-opacity-90 text-white font-bold py-4 rounded-full shadow-lg hover:shadow-xl transition-all text-center flex items-center justify-center gap-2">
+          <i class="fa-solid fa-credit-card"></i> {{ 'general.cart.checkout' | t }}
+        </button>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<!-- Backdrop Overlay -->
+<div id="CartDrawerOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300 ease-in-out opacity-0"></div>

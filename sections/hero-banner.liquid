@@ -1,0 +1,175 @@
+<!-- sections/hero-banner.liquid -->
+<section class="relative bg-customBgSec overflow-hidden py-16 md:py-28 lg:py-36 border-b border-gray-100 flex items-center min-h-[80vh]">
+  
+  <!-- Curved background shapes and floating elements -->
+  <div class="absolute inset-0 z-0 opacity-40">
+    <div class="absolute top-10 left-10 text-primary/10 text-9xl float-animation">
+      <i class="fa-solid fa-paw"></i>
+    </div>
+    <div class="absolute bottom-10 right-10 text-secondary/10 text-[12rem] float-animation-delay">
+      <i class="fa-solid fa-bone"></i>
+    </div>
+    <div class="absolute top-1/4 right-1/4 text-accent/10 text-8xl float-animation">
+      <i class="fa-solid fa-fish"></i>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+    
+    <!-- Hero Text Content -->
+    <div class="space-y-8 text-center lg:text-left">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold text-xs tracking-wider uppercase" data-aos="fade-down">
+        <i class="fa-solid fa-sparkles animate-pulse"></i> {{ section.settings.sub_heading }}
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black font-heading text-customText leading-[1.1] tracking-tight" data-aos="fade-right" data-aos-delay="100">
+        {{ section.settings.heading_part1 }} <br>
+        <span class="text-primary relative inline-block">
+          {{ section.settings.heading_highlight }}
+          <!-- Brush stroke or accent line underneath highlight -->
+          <span class="absolute left-0 bottom-1 w-full h-2 bg-accent/30 rounded-full -z-10 transform skew-x-12"></span>
+        </span> 
+        {{ section.settings.heading_part2 }}
+      </h1>
+
+      <p class="text-lg text-customTextMuted font-medium max-w-xl mx-auto lg:mx-0 leading-relaxed" data-aos="fade-right" data-aos-delay="200">
+        {{ section.settings.description }}
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4" data-aos="fade-up" data-aos-delay="300">
+        <a href="{{ section.settings.btn1_link | default: routes.all_products_collection_url }}" class="w-full sm:w-auto bg-primary hover:bg-opacity-90 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all text-center flex items-center justify-center gap-2 group">
+          <span>{{ section.settings.btn1_text }}</span>
+          <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        </a>
+        <a href="{{ section.settings.btn2_link | default: '/pages/about' }}" class="w-full sm:w-auto bg-white border-2 border-gray-200 hover:border-primary hover:text-primary text-customText font-bold py-4 px-8 rounded-full shadow-sm hover:shadow-md transition-all text-center flex items-center justify-center gap-2">
+          <span>{{ section.settings.btn2_text }}</span>
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="pt-6 border-t border-gray-200/50 flex flex-wrap justify-center lg:justify-start gap-6 text-xs font-bold text-customTextMuted" data-aos="fade-up" data-aos-delay="400">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-circle-check text-green-500"></i> 100% Organic &amp; Vet Approved
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-star text-accent"></i> 4.9/5 stars rating by Pet Parents
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Image Content with interactive floating widgets -->
+    <div class="relative flex justify-center lg:justify-end" data-aos="zoom-in" data-aos-delay="200">
+      
+      <!-- Premium Circular Background Decoration -->
+      <div class="absolute w-[80%] h-[80%] rounded-full bg-gradient-to-tr from-primary/10 to-secondary/10 filter blur-3xl -z-10 animate-[pulse_10s_infinite]"></div>
+
+      <div class="relative w-full max-w-md sm:max-w-lg aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-1 transition-transform duration-500 bg-white">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="Premium Pet Supplies" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+        {%- else -%}
+          <!-- Premium Placeholder with cute SVG graphic of dog/cat -->
+          <div class="w-full h-full bg-orange-100 flex flex-col items-center justify-center p-8 space-y-6">
+            <div class="w-40 h-40 bg-white rounded-full flex items-center justify-center text-primary text-[5rem] shadow-lg relative">
+              <i class="fa-solid fa-dog float-animation"></i>
+              <span class="absolute top-0 right-0 text-accent text-3xl float-animation-delay"><i class="fa-solid fa-cat"></i></span>
+            </div>
+            <div class="text-center">
+              <p class="font-heading font-black text-2xl text-customText">Claws &amp; Paws Premium</p>
+              <p class="text-sm text-customTextMuted font-medium">Pet Supplies Co.</p>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Floating Widget 1: Happy Customer -->
+      <div class="absolute -bottom-4 -left-4 bg-white/90 backdrop-blur border border-gray-100 p-4 rounded-2xl shadow-xl flex items-center gap-3 float-animation max-w-[200px]">
+        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-500 text-lg flex-shrink-0">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div>
+          <p class="text-xs font-black text-customText">10k+ Happy Pets</p>
+          <p class="text-[10px] text-customTextMuted">Over 1,000 positive reviews</p>
+        </div>
+      </div>
+
+      <!-- Floating Widget 2: Free Gift badge -->
+      <div class="absolute -top-4 -right-4 bg-accent text-white p-4 rounded-full shadow-lg font-heading font-black text-center text-sm w-20 h-20 flex flex-col justify-center rotate-12 hover:rotate-0 transition-transform float-animation-delay select-none border-2 border-white">
+        <span>FREE</span>
+        <span class="text-[10px] font-bold">GIFT 🎁</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading",
+      "default": "Welcome to Claws & Paws"
+    },
+    {
+      "type": "text",
+      "id": "heading_part1",
+      "label": "Heading Part 1",
+      "default": "Everything for Your"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading Highlighted Word",
+      "default": "Beloved Pets"
+    },
+    {
+      "type": "text",
+      "id": "heading_part2",
+      "label": "Heading Part 2",
+      "default": "Under One Roof."
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover vet-approved health foods, ultra-durable fetch toys, cozy organic orthopedic bedding, and designer collars crafted for premium paws."
+    },
+    {
+      "type": "text",
+      "id": "btn1_text",
+      "label": "Button 1 Text",
+      "default": "Shop Best Sellers"
+    },
+    {
+      "type": "url",
+      "id": "btn1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_text",
+      "label": "Button 2 Text",
+      "default": "Our Pure Story"
+    },
+    {
+      "type": "url",
+      "id": "btn2_link",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "category": "Hero"
+    }
+  ]
+}
+{% endschema %}

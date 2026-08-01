@@ -1,0 +1,68 @@
+<!-- sections/announcement-bar.liquid -->
+{%- if section.settings.show_announcement -%}
+  <div class="bg-primary text-white text-xs sm:text-sm py-2 px-4 transition-all relative overflow-hidden z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center relative z-10">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-truck-fast"></i>
+        <span>{{ section.settings.text_left }}</span>
+      </div>
+      <div class="hidden md:flex items-center gap-4">
+        <span>{{ section.settings.text_center }}</span>
+      </div>
+      <div class="flex items-center gap-3">
+        {%- if section.settings.link != blank -%}
+          <a href="{{ section.settings.link }}" class="underline hover:text-orange-100 transition-colors font-semibold">
+            {{ section.settings.link_text }} <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+    <!-- Subtle sliding light effect on the bar -->
+    <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-[-100%] animate-[shimmer_5s_infinite]"></div>
+  </div>
+{%- endif -%}
+
+<style>
+  @keyframes shimmer {
+    100% {
+      transform: skewX(-12deg) translateX(100%);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text_left",
+      "label": "Left text",
+      "default": "Free shipping on orders over $50!"
+    },
+    {
+      "type": "text",
+      "id": "text_center",
+      "label": "Center text",
+      "default": "🐾 Premium Quality Vet-Approved Brand Supplies"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "Shop New Arrivals"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ]
+}
+{% endschema %}

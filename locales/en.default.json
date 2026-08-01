@@ -1,0 +1,36 @@
+{
+  "general": {
+    "cart": {
+      "title": "Your Cart",
+      "empty": "Your cart is currently empty.",
+      "continue_shopping": "Continue Shopping",
+      "checkout": "Checkout",
+      "subtotal": "Subtotal",
+      "remove": "Remove",
+      "quantity": "Quantity",
+      "add_to_cart": "Add to Cart",
+      "added_to_cart": "Added to Cart!"
+    },
+    "search": {
+      "placeholder": "Search our pet store...",
+      "submit": "Search",
+      "no_results": "No results found for \"{{ terms }}\"."
+    },
+    "contact": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "message": "Message",
+      "send": "Send Message",
+      "success": "Thanks for contacting us! We'll get back to you as soon as possible.",
+      "error": "Please adjust the errors below and try again."
+    },
+    "blog": {
+      "read_more": "Read More",
+      "posted_by": "Posted by {{ author }} on {{ date }}",
+      "back_to_blog": "Back to Blog",
+      "comments_count": "{{ count }} comments",
+      "no_comments": "Be the first to comment!"
+    }
+  }
+}
