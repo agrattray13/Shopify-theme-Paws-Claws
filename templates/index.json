@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_banner": {
@@ -40,6 +49,10 @@
     "blog_posts": {
       "type": "blog-posts",
       "settings": {}
+    },
+    "pagefly-home": {
+      "type": "pagefly-home",
+      "settings": {}
     }
   },
   "order": [
@@ -49,6 +62,7 @@
     "featured_products",
     "image_with_text",
     "testimonials",
-    "blog_posts"
+    "blog_posts",
+    "pagefly-home"
   ]
 }
